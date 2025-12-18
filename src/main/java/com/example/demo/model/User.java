@@ -35,11 +35,14 @@ public class User{
     public void setId(String role){
         this.role=role;
     }
-    public User(Long id
-     String email
-     private String password;
-     private String role;){
+    public User(Long id,
+     String email,
+     String password,
+     String role){
 
+    }
+    public User(){
+        
     }
 
 
