@@ -66,14 +66,14 @@ public class Vehicle{
     public void setId(Date id){
         this.createdAt=createdAt;
     }
-    public Vehicle(private Long id,
-    @NotNull private String vin,
-    private String make,
-    private String model,
-    private int year,
-    @NotNull private long ownerld,
-    private boolean active,
-    private Date createdAt){
+    public Vehicle(Long id,
+    @NotNull  String vin,
+     String make,
+     String model,
+     int year,
+    @NotNull  long ownerld,
+     boolean active,
+     Date createdAt){
          this.id=id;
          this.vin=vin;
          this.make=make;
@@ -88,7 +88,7 @@ public class Vehicle{
         
     }
     public Vehicle(){
-        
+
     }
 
 
