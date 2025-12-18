@@ -1,5 +1,5 @@
 package com.example.demo.repository;
 
-public interface ServiceEntryRepository extends JpaRepository <ServiceEntry,>{
+public interface ServiceEntryRepository extends JpaRepository <ServiceEntry,Long>{
     
 }

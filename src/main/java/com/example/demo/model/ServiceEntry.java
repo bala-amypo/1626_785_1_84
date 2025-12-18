@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import java.util.Date;
 public class ServiceEntry{
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+
     private Long id;
     //private Manytoone vehicle;
     //private manytoone garage;
@@ -68,5 +70,4 @@ public class ServiceEntry{
     public ServiceEntry(){
 
     }
-
 }

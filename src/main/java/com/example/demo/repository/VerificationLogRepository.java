@@ -1,5 +1,5 @@
 package com.example.demo.repository;
 
-public interface VerificationLogRepository extends JpaRepository <VerificationLog,>{
+public interface VerificationLogRepository extends JpaRepository <VerificationLog,Long>{
     
 }
