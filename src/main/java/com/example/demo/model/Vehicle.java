@@ -1,5 +1,9 @@
 package com.example.demo.model;
-
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GeneratedType;
+import jakarta.persistence.Entity;
+@Entity
 public class Vehicle{
     @Id
     @Generated
@@ -13,6 +17,7 @@ public class Vehicle{
     private long ownerld;
     private boolean active;
     private Date createdAt;
+    public Long getI
 
 
 
