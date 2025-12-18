@@ -2,7 +2,6 @@ package com.example.demo.model;
 public class Vehicle{
     @Id
     @Generated
-
     private Long id;
     @NotNull
     private String vin;
