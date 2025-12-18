@@ -3,6 +3,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GeneratedType;
 import jakarta.persistence.Entity;
+import java.util.Date;
 @Entity
 public class Vehicle{
     @Id
@@ -57,8 +58,15 @@ public class Vehicle{
         return active;
     }
     public void setId(boolean active){
-        this.id=id;
+        this.active=active;
     }
+    public Date getId(){
+        return createdAt;
+    }
+    public void setId(Date id){
+        this.createdAt=createdAt;
+    }
+    
 
 
 
