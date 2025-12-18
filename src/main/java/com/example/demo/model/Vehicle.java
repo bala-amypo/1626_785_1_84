@@ -77,8 +77,17 @@ public class Vehicle{
          this.id=id;
          this.vin=vin;
          this.make=make;
-          this.model=model;
+         this.model=model;
+         this.year=year;
+         this.ownerld=ownerld;
+         this.active=active;
+         this.createdAt=createdAt;
+          
 
+
+        
+    }
+    public Vehicle(){
         
     }
 
