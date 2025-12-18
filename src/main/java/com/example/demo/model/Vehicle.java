@@ -17,7 +17,36 @@ public class Vehicle{
     private long ownerld;
     private boolean active;
     private Date createdAt;
-    public Long getI
+    public Long getId(){
+        return id;
+    }
+    public void setId(Integer id){
+        this.id=id;
+    }
+    public String getId(){
+        return vin;
+    }
+    public void setId(String vin){
+        this.vin=vin;
+    }
+    public String getId(){
+        return make;
+    }
+    public void setId(String make){
+        this.make=make;
+    }
+    public String  getId(){
+        return model;
+    }
+    public void setId(String model){
+        this.model=model;
+    }
+    public int getId(){
+        return ;
+    }
+    public void setId(Integer id){
+        this.id=id;
+    }
 
 
 
