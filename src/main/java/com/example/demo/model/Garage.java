@@ -42,19 +42,21 @@ public class Garage{
     public void setId(boolean active){
         this.active=active;
     }
-    public long getId(){
-        return ownerld;
-    }
-    public void setId(long ownerld){
-        this.ownerld=ownerld;
-    }
-    public boolean getId(){
-        return active;
-    }
-    public void setId(boolean active){
+    
+    public Garage( Long id;
+      //String garageName;
+      String address;
+      String contactNumber;
+      boolean active;){
+        this.id=id;
+        this.garageName=garageName;
+        this.address=address;
+        this.contactNumber=contactNumber;
         this.active=active;
     }
-    public 
+    public Garage(){
+
+    }
 
 
     
