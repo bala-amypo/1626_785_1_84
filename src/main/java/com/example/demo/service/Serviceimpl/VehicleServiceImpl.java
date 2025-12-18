@@ -4,6 +4,7 @@ public class VehicleServiceImpl implements VehicleService{
     @Override
     public  Vehicle createVehicle(Vehicle vehi){
         return vehiclee.save(vehi);
+        
     }
-    
+
 }
