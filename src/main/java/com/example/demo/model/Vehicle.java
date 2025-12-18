@@ -7,7 +7,7 @@ import java.util.Date;
 @Entity
 public class Vehicle{
     @Id
-    @Generated
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     @NotNull
     private String vin;
