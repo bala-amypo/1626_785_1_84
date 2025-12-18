@@ -42,9 +42,21 @@ public class Vehicle{
         this.model=model;
     }
     public int getId(){
-        return ;
+        return year;
     }
-    public void setId(Integer id){
+    public void setId(int year){
+        this.year=year;
+    }
+    public long getId(){
+        return ownerld;
+    }
+    public void setId(long ownerld){
+        this.ownerld=ownerld;
+    }
+    public boolean getId(){
+        return active;
+    }
+    public void setId(boolean active){
         this.id=id;
     }
 
