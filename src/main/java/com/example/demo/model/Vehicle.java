@@ -3,5 +3,11 @@ public class Vehicle{
     @Id
 
     private Long id;
-    private String vin
+    @NotNull
+    private String vin;
+    private String make;
+    private String model;
+    private int year
+
+
 }
