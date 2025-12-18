@@ -7,7 +7,13 @@ public class Vehicle{
     private String vin;
     private String make;
     private String model;
-    private int year
+    private int year;
+    @NotNull
+    private long ownerld;
+    private boolean active;
+    private Date 
+
+
 
 
 }
