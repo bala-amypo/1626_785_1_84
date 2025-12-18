@@ -54,13 +54,19 @@ public class ServiceEntry{
         return description;
     }
     public void setId(String description){
-        this.active=active;
+        this.description=description;
     }
     public Date getId(){
-        return createdAt;
+        return recordedAt;
     }
     public void setId(Date id){
-        this.createdAt=createdAt;
+        this.recordedAt=recordedAt;
+    }
+    // public ServiceEntry(){
+//many to one .........
+    // }
+    public ServiceEntry(){
+
     }
 
 }
