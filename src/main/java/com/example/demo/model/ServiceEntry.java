@@ -38,22 +38,22 @@ public class ServiceEntry{
     public void setId(String serviceType){
         this.serviceType=serviceType;
     }
+    public Date getId(){
+        return serviceDate;
+    }
+    public void setId(Date serviceDate){
+        this.serviceDate=serviceDate;
+    }
     public int getId(){
-        return year;
+        return odometerReading;
     }
-    public void setId(int year){
-        this.year=year;
+    public void setId(int odometerReading{
+        this.odometerReading=odometerReading;
     }
-    public long getId(){
-        return ownerld;
+    public String getId(){
+        return description;
     }
-    public void setId(long ownerld){
-        this.ownerld=ownerld;
-    }
-    public boolean getId(){
-        return active;
-    }
-    public void setId(boolean active){
+    public void setId(String description){
         this.active=active;
     }
     public Date getId(){
