@@ -11,7 +11,36 @@ public class User{
      private String email;
      private String password;
      private String role;
-     
+     public Long getId(){
+        return id;
+    }
+    public void setId(Long id){
+        this.id=id;
+    }
+    public String getId(){
+        return  email;
+    }
+    public void setId(String email){
+        this.email=email;
+    }
+    public String getId(){
+        return  password;
+    }
+    public void setId(String password){
+        this.password=password;
+    }
+    public String getId(){
+        return  role;
+    }
+    public void setId(String role){
+        this.role=role;
+    }
+    public User(Long id
+     String email
+     private String password;
+     private String role;){
+
+    }
 
 
     

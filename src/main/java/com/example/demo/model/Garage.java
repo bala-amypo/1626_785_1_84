@@ -43,11 +43,11 @@ public class Garage{
         this.active=active;
     }
     
-    public Garage( Long id;
-      //String garageName;
-      String address;
-      String contactNumber;
-      boolean active;){
+    public Garage( Long id,
+      //String garageName,
+      String address,
+      String contactNumber,
+      boolean active){
         this.id=id;
         this.garageName=garageName;
         this.address=address;
