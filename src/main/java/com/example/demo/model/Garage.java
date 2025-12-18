@@ -21,26 +21,26 @@ public class Garage{
     public String getId(){
         return garageName;
     }
-    public void setId(String vin){
-        this.vin=vin;
+    public void setId(String garageName){
+        this.garageName=garageName;
     }
     public String getId(){
-        return make;
+        return address;
     }
-    public void setId(String make){
-        this.make=make;
+    public void setId(String address){
+        this.address=address;
     }
     public String  getId(){
-        return model;
+        return contactNumber;
     }
-    public void setId(String model){
-        this.model=model;
+    public void setId(String contactNumber){
+        this.contactNumber=contactNumber;
     }
-    public int getId(){
-        return year;
+    public boolean getId(){
+        return active;
     }
-    public void setId(int year){
-        this.year=year;
+    public void setId(boolean active){
+        this.active=active;
     }
     public long getId(){
         return ownerld;
@@ -54,12 +54,7 @@ public class Garage{
     public void setId(boolean active){
         this.active=active;
     }
-    public Date getId(){
-        return createdAt;
-    }
-    public void setId(Date id){
-        this.createdAt=createdAt;
-    }
+    public 
 
 
     
