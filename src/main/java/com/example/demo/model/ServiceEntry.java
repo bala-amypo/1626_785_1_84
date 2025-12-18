@@ -47,7 +47,7 @@ public class ServiceEntry{
     public int getId(){
         return odometerReading;
     }
-    public void setId(int odometerReading{
+    public void setId(int odometerReading){
         this.odometerReading=odometerReading;
     }
     public String getId(){
