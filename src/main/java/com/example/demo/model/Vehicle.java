@@ -66,7 +66,21 @@ public class Vehicle{
     public void setId(Date id){
         this.createdAt=createdAt;
     }
-    
+    public Vehicle(private Long id,
+    @NotNull private String vin,
+    private String make,
+    private String model,
+    private int year,
+    @NotNull private long ownerld,
+    private boolean active,
+    private Date createdAt){
+         this.id=id;
+         this.vin=vin;
+         this.make=make;
+          this.model=model;
+
+        
+    }
 
 
 
