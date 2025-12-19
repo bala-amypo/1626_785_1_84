@@ -3,11 +3,9 @@ package com.example.demo.model;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 
 import jakarta.validation.constraints.NotBlank;
@@ -15,13 +13,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 import lombok.Data;
-import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 @Entity
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ServicePart {
@@ -36,10 +32,13 @@ public class ServicePart {
 
     @NotBlank
     private String partName;
+     @NotBlank
+     @Positive
+    private String partNumber;
 
     @NotNull
     @Positive
-    private Integer quantity;
+    private int quantity;
 
     @NotNull
     @Positive
