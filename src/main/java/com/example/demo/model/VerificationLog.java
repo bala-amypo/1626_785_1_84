@@ -36,7 +36,7 @@ public class VerificationLog {
         }
     }
 
-    @NotBlank
+    @NotNull
      @Column(nullable = false)
     private Boolean verifiedBySystem=true;
 
