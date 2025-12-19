@@ -1,50 +1,43 @@
 package com.example.demo.model;
+
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GeneratedType;
-import jakarta.persistence.Entity;
-import java.util.Date;
-public class User{
-     @Id
-     @GeneratedValue(strategy=GenerationType.IDENTITY)
-     private Long id;
-     private String email;
-     private String password;
-     private String role;
-     public Long getId(){
-        return id;
-    }
-    public void setId(Long id){
-        this.id=id;
-    }
-    public String getId(){
-        return  email;
-    }
-    public void setId(String email){
-        this.email=email;
-    }
-    public String getId(){
-        return  password;
-    }
-    public void setId(String password){
-        this.password=password;
-    }
-    public String getId(){
-        return  role;
-    }
-    public void setId(String role){
-        this.role=role;
-    }
-    public User(Long id,
-     String email,
-     String password,
-     String role){
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 
-    }
-    public User(){
-        
-    }
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
+import lombok.Data;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
-    
+@Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Email
+    @NotBlank
+    @Column(name="email",unique = true)
+    private String email;
+
+    @NotBlank
+    @Size(min = 6)
+    private String password;
+
+    @NotNull
+    private String role;
 }
