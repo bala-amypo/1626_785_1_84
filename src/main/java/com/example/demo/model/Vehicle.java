@@ -23,6 +23,6 @@ public class Studententity{
     private int year;
     private Long ownerld;
     private Boolean active;         
-    private Date created;
+    private LocalTimeDate created;
 
 }
