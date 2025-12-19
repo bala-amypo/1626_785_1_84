@@ -1,6 +1,4 @@
 package com.example.demo.model;
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,8 +20,6 @@ private Long id;
 
 @Column(unique = true, nullable = false)
 private String vin;
-
-
 private String make;
 private String model;
 private Integer year;
