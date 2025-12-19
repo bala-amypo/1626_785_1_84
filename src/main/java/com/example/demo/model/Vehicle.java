@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,16 @@ public class Vehicle {
     private Long ownerId;
     private Boolean active;
     private LocalDateTime created;
+    @PrePersist
+   
+    public void Oncreate(){
+    LocalDateTime now= LocalDateTime.now();
+    if(this.created==null){
+
+    this.created=now;
+    }
+    
+    }
+    
+
 }
