@@ -1,100 +1,33 @@
 package com.example.demo.model;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GeneratedType;
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import java.util.Date;
-import java.time.LocalDateTime;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.Instant;
+
+
 @Entity
-public class Vehicle{
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
-    @NotNull
-    @Column(unique=true)
-    private String vin;
-    private String make;
-    private String model;
-    private int year;
-    @NotNull
-    private long ownerld;
-    private boolean active;
-    private LocalDateTime createdAt;
-    public Long getId(){
-        return id;
-    }
-    public void setId(Long id){
-        this.id=id;
-    }
-    public String getId(){
-        return vin;
-    }
-    public void setId(String vin){
-        this.vin=vin;
-    }
-    public String getId(){
-        return make;
-    }
-    public void setId(String make){
-        this.make=make;
-    }
-    public String  getId(){
-        return model;
-    }
-    public void setId(String model){
-        this.model=model;
-    }
-    public int getId(){
-        return year;
-    }
-    public void setId(int year){
-        this.year=year;
-    }
-    public long getId(){
-        return ownerld;
-    }
-    public void setId(long ownerld){
-        this.ownerld=ownerld;
-    }
-    public boolean getId(){
-        return active;
-    }
-    public void setId(boolean active){
-        this.active=active;
-    }
-    public LocalDateTime  getId(){
-        return createdAt;
-    }
-    public void setId(LocalDateTime id){
-        this.createdAt=createdAt;
-    }
-    public Vehicle(Long id,
-    @NotNull  String vin,
-     String make,
-     String model,
-     int year,
-    @NotNull  long ownerld,
-     Boolean active,
-    LocalDateTime  createdAt){
-         this.id=id;
-         this.vin=vin;
-         this.make=make;
-         this.model=model;
-         this.year=year;
-         this.ownerld=ownerld;
-         this.active=active;
-         this.createdAt=createdAt;
-          
+@Table(name = "vehicles")
+public class Vehicle {
 
 
-        
-    }
-    public Vehicle(){
-
-    }
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long id;
 
 
+@Column(unique = true, nullable = false)
+private String vin;
 
 
+private String make;
+private String model;
+private Integer year;
+private Long ownerId;
+private Boolean active = true;
+private Instant createdAt = Instant.now();
 }
