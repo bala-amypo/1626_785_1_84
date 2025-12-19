@@ -1,73 +1,76 @@
 package com.example.demo.model;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.math.BigDecimal;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GeneratedType;
-import jakarta.persistence.Entity;
-import java.util.Date;
-public class ServiceEntry{
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import lombok.Data;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+@Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ServiceEntry {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //private Manytoone vehicle;
-    //private manytoone garage;
-    private String serviceType;
-    private Date serviceDate;
-    private Integer odometerReading;
-    private String description;
-    private Date recordedAt;
-      public Long getId(){
-        return id;
-    }
-    public void setId(Long id){
-        this.id=id;
-    }
-    // public String getId(){
-    //     return vehicle;
-    // }
-    // public void setId(String vehicle){
-    //     this.vehicle=vehicle;
-    // }
-    // public String getId(){
-    //     return garage;
-    // }
-    // public void setId(String garage){
-    //     this.garage=garage;
-    // }
-    public String  getId(){
-        return serviceType;
-    }
-    public void setId(String serviceType){
-        this.serviceType=serviceType;
-    }
-    public Date getId(){
-        return serviceDate;
-    }
-    public void setId(Date serviceDate){
-        this.serviceDate=serviceDate;
-    }
-    public int getId(){
-        return odometerReading;
-    }
-    public void setId(int odometerReading){
-        this.odometerReading=odometerReading;
-    }
-    public String getId(){
-        return description;
-    }
-    public void setId(String description){
-        this.description=description;
-    }
-    public Date getId(){
-        return recordedAt;
-    }
-    public void setId(Date id){
-        this.recordedAt=recordedAt;
-    }
-    // public ServiceEntry(){
-//many to one .........
-    // }
-    public ServiceEntry(){
 
-    }
+    @ManyToOne
+    @JoinColumn(name = "vehicle_id", nullable = false)
+    private Vehicle vehicle;
+
+    @ManyToOne
+    @JoinColumn(name = "garage_id", nullable = false)
+    private Garage garage;
+
+    @NotBlank
+    private String serviceType;
+
+    @NotNull
+    private LocalDate serviceDate;
+
+    @NotNull
+    @Positive
+    private Long odometerReading;
+
+    @NotNull
+    @Positive
+    private BigDecimal cost;
+
+    @Lob
+    @Size(max = 2000)
+    private String notes;
+
+    @CreationTimestamp
+    private LocalDateTime submittedAt;
+
+    @OneToMany(mappedBy = "serviceEntry")
+    private List<ServicePart> parts;
+
+    @OneToMany(mappedBy = "serviceEntry")
+    private List<VerificationLog> verificationLogs;
 }
