@@ -2,14 +2,17 @@ package com.example.demo.model;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GeneratedType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import java.util.Date;
+import java.time.LocalDateTime;
 @Entity
 public class Vehicle{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     @NotNull
+    @Column(unique=true)
     private String vin;
     private String make;
     private String model;
@@ -17,7 +20,7 @@ public class Vehicle{
     @NotNull
     private long ownerld;
     private boolean active;
-    private Date createdAt;
+    private LocalDateTime createdAt;
     public Long getId(){
         return id;
     }
@@ -63,7 +66,7 @@ public class Vehicle{
     public Date getId(){
         return createdAt;
     }
-    public void setId(Date id){
+    public void setId(LocalDateTime id){
         this.createdAt=createdAt;
     }
     public Vehicle(Long id,
