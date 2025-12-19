@@ -1,26 +1,28 @@
-package com.example.demo.model;
-import jakarta.persistence.Column;
+package com.example.demo.entity ;
+import java.util.Date;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.time.Instant;
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Studententity{
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
+    private String vin;
+    private String make;
+    private String model; 
+    private int year;
+    private Long ownerld;
+    private Boolean active;         
+    private Date created;
 
-public class Vehicle {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
-
-
-@Column(unique = true, nullable = false)
-private String vin;
-private String make;
-private String model;
-private Integer year;
-private Long ownerId;
-private Boolean active = true;
-private Instant createdAt = Instant.now();
 }
