@@ -63,7 +63,7 @@ public class Vehicle{
     public void setId(boolean active){
         this.active=active;
     }
-    public Date getId(){
+    public LocalDateTime  getId(){
         return createdAt;
     }
     public void setId(LocalDateTime id){
@@ -75,8 +75,8 @@ public class Vehicle{
      String model,
      int year,
     @NotNull  long ownerld,
-     boolean active,
-     Date createdAt){
+     Boolean active,
+    LocalDateTime  createdAt){
          this.id=id;
          this.vin=vin;
          this.make=make;
