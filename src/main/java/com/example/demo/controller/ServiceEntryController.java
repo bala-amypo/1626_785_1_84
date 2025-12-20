@@ -32,7 +32,7 @@ public ServiceEntry getServiceEntry(Long id){
 }
 @GetMapping("/get/garage/{id}")
 public Garage getServiceGarage(Long id){
-    return serr.;
+    return serr.getEntriesByGarage(Long garageId);
 }
 
 }
