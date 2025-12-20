@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.ServiceEntry;
-import com.example.demo.repository.ServiceEntryRepository; 
+import com.example.demo.repository.ServiceEntryRepository;
 import com.example.demo.service.ServiceEntryService;
 
 @Service
@@ -29,11 +29,11 @@ public class ServiceEntryServiceImpl implements ServiceEntryService {
 
     @Override
     public List<ServiceEntry> getEntriesForVehicle(Long vehicleId) {
-        return s.findAll();   
+        return s.findAll();
     }
 
     @Override
     public ServiceEntry getEntriesByGarage(Long garageId) {
-        return s.findById(garageId).orElse(null); 
+        return s.findById(garageId).orElse(null);
     }
 }
