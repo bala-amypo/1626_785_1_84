@@ -23,10 +23,14 @@ public class ServicePartController{
         return server.createServicePart(ServicePart part);
     }
 
+    @GetMapping("/GET/entry/{entryId}}")
+    public List<ServicePart> getPart(@PathVariable Long entryId) {
+        return server.getPartsForEntry(Long entryId);
+    }
     
 
     @GetMapping("/Gettverification/{id}")
-    public ServicePart getarts(@PathVariable Long id) {
+    public ServicePart getparts(@PathVariable Long id) {
         return server.getLogById(id);
     }
 }
