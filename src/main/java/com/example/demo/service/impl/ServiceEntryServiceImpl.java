@@ -8,66 +8,32 @@ import com.example.demo.model.ServiceEntry;
 import com.example.demo.repository.ServiceEntryRepository;
 import com.example.demo.service.ServiceEntryService;
 
-// @Service
-// public class ServiceEntryServiceImpl implements ServiceEntryService {
-
-//     private final ServiceEntryRepository s;
-
-//     public ServiceEntryServiceImpl(ServiceEntryRepository s) {
-//         this.s = s;
-//     }
-
-//     @Override
-//     public ServiceEntry createServiceEntry(ServiceEntry entry) {
-//         return s.save(entry);
-//     }
-
-//     @Override
-//     public ServiceEntry getServiceEntryById(Long id) {
-//         return s.findById(id).orElse(null);
-//     }
-
-//     @Override
-//     public List<ServiceEntry> getEntriesForVehicle(Long vehicleId) {
-//         return s.findAll();
-//     }
-
-//     @Override
-//     public ServiceEntry getEntriesByGarage(Long garageId) {
-//         return s.findById(garageId).orElse(null);
-//     }
-// }
 @Service
 public class ServiceEntryServiceImpl implements ServiceEntryService {
 
-    private final ServiceEntryRepository serviceEntryRepository;
-    private final GarageRepository garageRepository;
-    private final VehicleRepository vehicleRepository;
+    private final ServiceEntryRepository s;
 
-    public ServiceEntryServiceImpl(
-            ServiceEntryRepository serviceEntryRepository,
-            GarageRepository garageRepository,
-            VehicleRepository vehicleRepository) {
-        this.serviceEntryRepository = serviceEntryRepository;
-        this.garageRepository = garageRepository;
-        this.vehicleRepository = vehicleRepository;
+    public ServiceEntryServiceImpl(ServiceEntryRepository s) {
+        this.s = s;
     }
 
     @Override
     public ServiceEntry createServiceEntry(ServiceEntry entry) {
+        return s.save(entry);
+    }
 
-        Garage garage = garageRepository.findById(
-                entry.getGarage().getId()
-        ).orElseThrow(() -> new RuntimeException("Garage not found"));
+    @Override
+    public ServiceEntry getServiceEntryById(Long id) {
+        return s.findById(id).orElse(null);
+    }
 
-        Vehicle vehicle = vehicleRepository.findById(
-                entry.getVehicle().getId()
-        ).orElseThrow(() -> new RuntimeException("Vehicle not found"));
+    @Override
+    public List<ServiceEntry> getEntriesForVehicle(Long vehicleId) {
+        return s.findAll();
+    }
 
-       
-        entry.setGarage(garage);
-        entry.setVehicle(vehicle);
-
-        return serviceEntryRepository.save(entry);
+    @Override
+    public ServiceEntry getEntriesByGarage(Long garageId) {
+        return s.findById(garageId).orElse(null);
     }
 }
