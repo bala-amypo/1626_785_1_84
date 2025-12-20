@@ -31,23 +31,24 @@ public class ServiceEntry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "vehicle_id", nullable = false)
-    private Vehicle vehicle;
+   @OneToOne
+@JoinColumn(name = "vehicle_id", nullable = false)
+private Vehicle vehicle;
 
-    @OneToOne
-    @JoinColumn(name = "garage_id", nullable = false)
-    private Garage garage;
+@OneToOne
+@JoinColumn(name = "garage_id", nullable = false)
+private Garage garage;
 
-    @NotBlank
-    private String serviceType;
+@NotBlank
+private String serviceType;
 
-    @NotNull
-    private LocalDate serviceDate;
+@NotNull
+private LocalDate serviceDate;
 
-    @NotNull
-    @Positive
-    private int odometerReading;
+@NotNull
+@Positive
+private int odometerReading;
+
 
     private String description;
 
