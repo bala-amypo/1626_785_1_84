@@ -10,7 +10,8 @@ public interface VehicleService {
 
     Vehicle getVehicleByVin(String vin);
 
-    List <Vehicle> getVehicleByOwner(Long ownerId);
+    List<Vehicle>getVehicleByOwner(Long ownerId);
 
     void deactivateVehicle(Long id);
 }
+deactivateVehicle
