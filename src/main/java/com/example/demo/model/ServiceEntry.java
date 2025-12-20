@@ -1,6 +1,8 @@
 package com.example.demo.model;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -8,17 +10,24 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+
+import com.example.demo.entity.Vehicle;   
+import com.example.demo.model.Garage;     
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ServiceEntry {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,9 +56,8 @@ public class ServiceEntry {
 
     @PrePersist
     public void Onrecord() {
-        LocalDateTime now = LocalDateTime.now();
         if (this.recordedAt == null) {
-            this.recordedAt = now;
+            this.recordedAt = LocalDateTime.now();
         }
     }
 }

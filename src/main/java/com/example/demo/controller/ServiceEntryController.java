@@ -1,22 +1,25 @@
 package com.example.demo.controller;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+
 import com.example.demo.model.ServiceEntry;
 import com.example.demo.service.ServiceEntryService;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 @RestController
-public class ServiceEntryController{
-    @Autowired ServiceEntryService serr;
-@PostMapping("/POSTTT")
-public ServiceEntry ServiceEntrypost(@RequestBody ServiceEntry entry){
-    return serr.createServiceEntry(entry);
+@RequestMapping("/service-entries")
+public class ServiceEntryController {
 
-}
+    private final ServiceEntryService serr;
 
-    
+    public ServiceEntryController(ServiceEntryService serr) {
+        this.serr = serr;
+    }
+
+    @PostMapping
+    public ServiceEntry createServiceEntry(@RequestBody ServiceEntry entry) {
+        return serr.createServiceEntry(entry);
+    }
 }
