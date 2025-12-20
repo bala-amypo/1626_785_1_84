@@ -17,5 +17,13 @@ public class VerificationLogServiceImpl implements VerificationLogService{
     public  VerificationLog createVerificationLog(VerificationLog log) {
         return verify.save(log);
     }
-    
+     @Override
+    public  List<VerificationLog> getLogsForEntry(Long entryId) {
+      return verify.findAll();
+     }
+      @Override
+    public VerificationLog getLogById(Long id) {
+      return verify.findById(id).orElse(null);
+     }
+
 }
