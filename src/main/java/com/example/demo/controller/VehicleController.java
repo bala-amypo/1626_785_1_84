@@ -20,8 +20,8 @@ public Vehicle dopost(@RequestBody Vehicle ve){
 
 }
 @GetMapping("/GET/{id}")
- public Vehicle getVehicleById(Long id){
-    return vehii.getAllData();
+ public Vehicle getVehicle(Long id){
+    return vehii.getVehicleById(Long id);
 }
 
 }
