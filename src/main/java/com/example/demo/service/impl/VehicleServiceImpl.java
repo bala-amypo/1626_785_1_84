@@ -29,8 +29,11 @@ public class VehicleServiceImpl implements VehicleService{
     }
     @Override
     public   void deactivateVehicle(Long id){
-        
-        return 
+         Vehicle vehicle=v.findById(id).orElse(null);
+         if(vehicle!=null){
+            vehicle.setIsactive(false);
+            v.save()
+         }
     }
 
 }

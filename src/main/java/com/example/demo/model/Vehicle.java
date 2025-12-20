@@ -26,7 +26,7 @@ public class Vehicle {
     private int year;
     @NotNull
     private long ownerId;
-    private Boolean active;
+    private Boolean isactive=true;
     private LocalDateTime created;
     @PrePersist
     public void Oncreate() {
@@ -35,7 +35,5 @@ public class Vehicle {
             this.created = now;
         }
     }
-    public Vechicle(){
-        this.active=true;
-    }
+    
 }
