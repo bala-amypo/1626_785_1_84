@@ -13,20 +13,20 @@ import com.example.demo.service.GarageService;
 @RestController
 public class GarageController {
 @Autowired GarageService garr;
-@PostMapping("/POST")
+@PostMapping("/POSTT")
 public Garage Garagepost(@RequestBody Garage garage){
     return garr.createGarage(garage);
 
 }
-@PutMapping("/PUT/{id}")
+@PutMapping("/PUTT/{id}")
 public Garage putGarage(@PathVariable Long id, @RequestBody Garage garage){
     return garr.UpdateGarage(id,garage);
 }
-@GetMapping("/get/{id}")
+@GetMapping("/gett/{id}")
 public Garage getGarage(Long id){
     return garr.getGarageById(id);
 }
-@GetMapping("/GET")
+@GetMapping("/GETT")
 public List<Garage>getGarages(){
     return garr.getAllGarage();
 }
