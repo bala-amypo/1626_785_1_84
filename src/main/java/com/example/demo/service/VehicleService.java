@@ -14,4 +14,3 @@ public interface VehicleService {
 
     void deactivateVehicle(Long id);
 }
-deactivateVehicle
