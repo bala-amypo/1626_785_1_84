@@ -11,7 +11,7 @@ import com.example.demo.model.ServiceEntry;
 import com.example.demo.service.ServiceEntryService;
 @RestController
 public class ServiceEntryController{
-    @Autowired GarageService serr;
+    @Autowired ServiceEntryService serr;
 @PostMapping("/POSTTT")
 public ServiceEntry ServiceEntrypost(@RequestBody ServiceEntry entry){
     return serr.createServiceEntry(entry);
