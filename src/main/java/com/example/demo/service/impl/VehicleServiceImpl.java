@@ -17,11 +17,11 @@ public class VehicleServiceImpl implements VehicleService{
     }
     @Override
     public Vehicle getVehicleById(Long id){
-      return v.findAll();
+      return v.findById(id);
      }
     @Override
     public Vehicle getVehicleByVin(String vin) {
-      return v.findAll();
+      return v.findById(vin);
      }
     @Override
     public  List <Vehicle> getVehicleByOwner(Long ownerId){
