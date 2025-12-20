@@ -1,4 +1,22 @@
-// package com.example.demo.controller;
-// public class ServiceEntryController{
+package com.example.demo.controller;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.model.ServiceEntry;
+import com.example.demo.service.ServiceEntryService;
+@RestController
+public class ServiceEntryController{
+    @Autowired GarageService serr;
+@PostMapping("/POSTTT")
+public ServiceEntry ServiceEntrypost(@RequestBody ServiceEntry entry){
+    return serr.createServiceEntry(entry);
+
+}
+
     
-// }
+}

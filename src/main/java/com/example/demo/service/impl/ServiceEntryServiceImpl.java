@@ -12,9 +12,8 @@ public class ServiceEntryServiceImpl implements ServiceEntryService{
     public ServiceEntryServiceImpl(ServiceEntryRepository s) {
         this.s = s;
     }
-
     @Override
-    public ServiceEntry createServiceEntry( garage) {
-        return g.save(garage);
+    public ServiceEntry createServiceEntry(ServiceEntry entry) {
+        return s.save(entry);
     }
 }
