@@ -18,7 +18,7 @@ public class VehicleServiceImpl implements VehicleService{
     }
     @Override
     public Vehicle getVehicleById(Long id){
-      return v.findById(id);
+      return v.findById(id).orElse(null);
      }
     @Override
     public Vehicle getVehicleByVin(String vin) {
