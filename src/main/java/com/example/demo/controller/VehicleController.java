@@ -21,22 +21,19 @@ public Vehicle dopost(@RequestBody Vehicle ve){
 }
 @GetMapping("/GET/{id}")
  public Vehicle getVehicle(Long id){
-    return vehii.getVehicleById(Long id);
+    return vehii.getVehicleById(id);
 }
 @GetMapping("/GET/vin/{vin}")
  public Vehicle getvinVehicle(String vin){
-    return vehii.getVehicleByVin(String vin);
+    return vehii.getVehicleByVin(vin);
 }
 @GetMapping("/GET/owner/{ownerId}")
  public Vehicle getownerIdVehicle(Long ownerId){
-    return vehii.getVehicleByOwner(Long ownerId);
+    return vehii.getVehicleByOwner(ownerId);
 }
 @PutMapping("PUT/{id}")
-public Studententity putvalue(@PathVariable int id, @RequestBody Studententity entity){
-    return ser.UpdateData(id,entity);
-}
-
-
+public Studententity putVehicle(@PathVariable Long id){
+    return vehii.deactivateVehicle(id);
 }
 
 
