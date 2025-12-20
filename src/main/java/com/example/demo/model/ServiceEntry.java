@@ -48,11 +48,8 @@ private LocalDate serviceDate;
 @NotNull
 @Positive
 private int odometerReading;
-
-
-    private String description;
-
-    private LocalDateTime recordedAt;
+private String description;
+private LocalDateTime recordedAt;
 
     @PrePersist
     public void Onrecord() {
