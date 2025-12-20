@@ -12,15 +12,15 @@ import com.example.demo.service.ServicePartControllerService;
 @RestController
 public class ServicePartController{
     
-    private final VerificationLogService ver;
+    private final ServicePartService server;
 
-    public VerificationLogController(VerificationLogService ver) {
-        this.ver = ver;
+    public ServicePartController(ServicePartService server) {
+        this.server = server;
     }
 
-    @PostMapping("/POSTverification")
-    public VerificationLog createLog(@RequestBody VerificationLog log) {
-        return ver.createVerificationLog(log);
+    @PostMapping("/POSTPart")
+    public ServicePartController createPart(@RequestBody ServicePart part) {
+        return ver.;
     }
 
     @GetMapping("/GETTverification")
