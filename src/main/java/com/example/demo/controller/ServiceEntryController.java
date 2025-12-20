@@ -26,6 +26,13 @@ public class ServiceEntryController {
     public List<ServiceEntry> getvehicleId(@PathVariable Long ownerId) {
         return serr.getEntriesForVehicle(Long vehicleId);
     }
-    
+@GetMapping("/gettt/{id}")
+public ServiceEntry getServiceEntry(Long id){
+    return serr.getServiceEntryById(Long id);
+}
+@GetMapping("/get/garage/{id}")
+public Garage getServiceGarage(Long id){
+    return serr.;
+}
 
 }
