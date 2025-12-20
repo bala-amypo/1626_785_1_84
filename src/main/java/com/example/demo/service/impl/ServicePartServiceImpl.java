@@ -18,23 +18,16 @@ public class ServicePartServiceImpl implements ServicePartService{
     }
 
     @Override
-    public   ServicePart createServicePart(ServicePart part) {
-        return g.save(garage);
+    public ServicePart createServicePart(ServicePart part) {
+        return sp.save(part);
     }
-    @Override
-public {
-      if(g.existsById(id)){
-         garage.setId(id);
-         return g.save(garage);
-      }
-      return null;
-}
+
  @Override
-    public Garage getGarageById(Long id){
-      return g.findById(id).orElse(null);
+    public ServicePart getPartById(Long id)  {
+      return sp.findById(id).orElse(null);
      }
      @Override
-    public List<Garage>getAllGarage(){
-      return g.findAll();
+    public List<ServicePart> getPartsForEntry(Long entryId){
+      return sp.findAll();
      }
 }

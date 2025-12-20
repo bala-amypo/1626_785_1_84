@@ -1,4 +1,4 @@
-// package com.example.demo.controller;
-// public class ServicePartController{
+package com.example.demo.controller;
+public class ServicePartController{
     
-// }
+}
