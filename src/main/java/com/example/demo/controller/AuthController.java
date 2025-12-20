@@ -20,7 +20,7 @@ public class AuthController {
         this.userr = userr;
     }
 
-    @PostMapping("/register")
+    @PostMapping("/regg")
     public String register(@RequestBody User user) {
         return userr.createUser(user); 
     }
