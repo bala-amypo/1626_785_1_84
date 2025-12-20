@@ -13,7 +13,7 @@ import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 @RestController
 public class AuthController{
-@Autowired GarageService userr;
+@Autowired UserService userr;
 @PostMapping("/POSTT")
 public User Userpost(@RequestBody User reg){
     return userr.createGarage(reg);
