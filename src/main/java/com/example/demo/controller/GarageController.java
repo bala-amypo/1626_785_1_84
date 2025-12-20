@@ -30,7 +30,10 @@ public Garage getGarage(Long id){
 public List<Garage>getGarages(){
     return garr.getAllGarage();
 }
-
+ @PutMapping("/PUTT/{id}")
+    public void deactivateGarage(@PathVariable Long id) {
+        garr.deactivateGarage(id);
+    }
 
 }
 
