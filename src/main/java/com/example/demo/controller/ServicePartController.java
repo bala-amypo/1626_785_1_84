@@ -23,10 +23,7 @@ public class ServicePartController{
         return ver.;
     }
 
-    @GetMapping("/GETTverification")
-    public List<VerificationLog> getLog(@RequestParam Long entryId) {
-        return ver.getLogsForEntry(entryId);
-    }
+    
 
     @GetMapping("/Gettverification/{id}")
     public VerificationLog getVerification(@PathVariable Long id) {
