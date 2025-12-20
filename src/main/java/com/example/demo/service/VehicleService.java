@@ -4,5 +4,6 @@ import java.util.List;
 public interface VehicleService{
     Vehicle createVehicle(Vehicle vehicle);
     List<Vehicle>getVehicleById(Long id);
-      List<Vehicle>getVehicleByVin(Long id);
+    List<Vehicle>getVehicleByVin(String vin);
+    List<Vehicle>getVehicleByOwner(Long ownerld);
 }

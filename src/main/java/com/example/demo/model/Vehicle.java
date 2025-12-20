@@ -35,4 +35,7 @@ public class Vehicle {
             this.created = now;
         }
     }
+    public Vechicle(){
+        this.active=true;
+    }
 }
