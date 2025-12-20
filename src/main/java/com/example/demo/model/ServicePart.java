@@ -38,7 +38,7 @@ public class ServicePart {
     private String partNumber;
 
     @NotNull
-    @Positive
+ 
     private int quantity;
 
     @NotNull

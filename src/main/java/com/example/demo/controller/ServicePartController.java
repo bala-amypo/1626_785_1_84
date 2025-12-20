@@ -1,38 +1,37 @@
 package com.example.demo.controller;
+
 import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.demo.model.ServicePartController;
-import com.example.demo.service.ServicePartControllerService;
+
+import com.example.demo.model.ServicePart;
+import com.example.demo.service.ServicePartService;
 
 @RestController
-public class ServicePartController{
-    
+public class ServicePartController {
+
     private final ServicePartService server;
 
     public ServicePartController(ServicePartService server) {
         this.server = server;
     }
 
-    @PostMapping("/POSTPart")
+    @PostMapping("/part")
     public ServicePart createPart(@RequestBody ServicePart part) {
-        return server.createServicePart(ServicePart part);
+        return server.createServicePart(part);
     }
 
-    @GetMapping("/GET/entry/{entryId}}")
+    @GetMapping("/part/entry/{entryId}")
     public List<ServicePart> getPart(@PathVariable Long entryId) {
-        return server.getPartsForEntry(Long entryId);
+        return server.getPartsForEntry(entryId);
     }
-    
 
-    @GetMapping("/Gettverification/{id}")
-    public ServicePart getparts(@PathVariable Long id) {
-        return server.getLogById(id);
+    @GetMapping("/part/{id}")
+    public ServicePart getPartById(@PathVariable Long id) {
+        return server.getPartById(id);
     }
 }
-
-
