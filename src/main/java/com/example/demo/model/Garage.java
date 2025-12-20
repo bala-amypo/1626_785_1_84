@@ -25,6 +25,6 @@ public class Garage {
     @NotBlank
     private String address;
     private String contactNumber;
-    private Boolean active=true;
+    private Boolean isactive=true;
    
 }
