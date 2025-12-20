@@ -10,5 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class VerificationLogController{
 
+    private final VerificationLogService ver;
+
+    public AuthController(VerificationLogService ver) {
+        this.ver = ver;
+    }
+
+    @PostMapping("/verification")
+    public {
+        return ver.createUser(ver); 
+    }
+    @GetMapping("/GETverification")
+    public List<User>getAll(){
+    return userr.getAllUser();
+}
     
 }
