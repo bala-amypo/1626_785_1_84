@@ -28,7 +28,10 @@ public class VehicleServiceImpl implements VehicleService{
         return v.findAll();
     }
     @Override
-    public 
+    public   void deactivateVehicle(Long id){
+        
+        return 
+    }
 
 }
 
