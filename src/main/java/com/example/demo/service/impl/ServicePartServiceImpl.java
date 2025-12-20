@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.ServiceEntry;
-import com.example.demo.repository.ServiceEntryRepository;
-import com.example.demo.service.ServiceEntryService;
+import com.example.demo.model.ServicePart;
+import com.example.demo.repository.ServicePartRepository;
+import com.example.demo.service.ServicePartService;
 
 @Service
 public class ServicePartServiceImpl implements ServicePartService{
