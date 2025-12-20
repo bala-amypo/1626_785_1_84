@@ -33,7 +33,7 @@ public Vehicle dopost(@RequestBody Vehicle ve){
 }
 @PutMapping("PUT/{id}")
 public Vehicle putVehicle(@PathVariable Long id){
-    return vehii.deactivateVehicle(id);
+     vehii.deactivateVehicle(id);
 }
 }
 
