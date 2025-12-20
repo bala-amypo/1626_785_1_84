@@ -17,12 +17,17 @@ public class VerificationLogController{
     }
 
     @PostMapping("/verification")
-    public {
-        return ver.createUser(ver); 
+    public VerificationLog createLog(VerificationLog log){
+        return ver.createVerificationLog(log); 
     }
     @GetMapping("/GETverification")
-    public List<User>getAll(){
-    return userr.getAllUser();
+    public List<VerificationLog> getLog(Long entryId){
+    return ver.getLogsForEntry(entryId);
 }
+@GetMapping("/gettverification/{id}")
+public Garage getGarage(Long id){
+    return garr.getGarageById(id);
+}
+
     
 }
