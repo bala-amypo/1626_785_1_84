@@ -9,8 +9,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Garage;
+import com.example.demo.model.User;
 import com.example.demo.service.UserService;
+@RestController
 public class AuthController{
-    
+@Autowired GarageService garr;
+@PostMapping("/POSTT")
+public User Userpost(@RequestBody Garage garage){
+    return garr.createGarage(garage);
+
+}
 }
