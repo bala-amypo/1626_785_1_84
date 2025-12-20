@@ -6,20 +6,26 @@ import  com.example.demo.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class VehicleServiceImpl implements VehicleService{
-    @Autowired VehicleRepository vehicle;
+    @Autowired VehicleRepository v;
     @Override
-    public  Vehicle createVehicle(Vehicle vehi){
-        return vehicle.save(vehi);
+    public  Vehicle createVehicle(Vehicle vehicle){
+        return v.save(vehicle);
         
     }
     @Override
     public Vehicle getVehicleById(Long id){
       return v.findAll();
      }
-      @Override
+    @Override
     public Vehicle getVehicleByVin(String vin) {
-      return student.findAll();
+      return v.findAll();
      }
+    @Override
+    public 
+    Vehicle getVehicleByOwner(Long ownerId){
+        return v.findAll();
+    }
+    
 
 }
 
