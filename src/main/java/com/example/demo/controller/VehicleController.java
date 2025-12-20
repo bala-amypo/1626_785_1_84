@@ -14,8 +14,8 @@ import java.util.List;
 @RestController
 public class VehicleController{
     @Autowired VehicleService ser;
-@PostMapping("/post")
-public Studententity dopost(@RequestBody Studententity stu){
+@PostMapping("/POST")
+public Vehicle dopost(@RequestBody Vehicle stu){
     return ser.postdata(stu);
 
 }
