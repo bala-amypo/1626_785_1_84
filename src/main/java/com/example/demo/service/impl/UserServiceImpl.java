@@ -9,7 +9,7 @@ public class UserServiceImpl implements UserService{
     
     private final UserServiceRepository u;
 
-    public GarageServiceImpl(UserServiceRepository u) {
+    public UserServiceImpl(UserServiceRepository u) {
         this.u = u;
     }
 
