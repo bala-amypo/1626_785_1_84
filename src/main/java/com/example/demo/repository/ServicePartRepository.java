@@ -1,5 +1,5 @@
-package com.example.demo.repository;
+// package com.example.demo.repository;
 
-public interface ServicePartRepository extends JpaRepository <ServicePart,Long>{
+// public interface ServicePartRepository extends JpaRepository <ServicePart,Long>{
     
-}
+// }

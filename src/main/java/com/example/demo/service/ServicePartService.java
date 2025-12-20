@@ -1,4 +1,4 @@
-package com.example.demo.service;
-public interface ServicePartService{
+// package com.example.demo.service;
+// public interface ServicePartService{
     
-}
+// }
