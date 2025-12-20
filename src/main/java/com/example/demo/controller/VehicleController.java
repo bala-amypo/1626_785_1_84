@@ -13,15 +13,15 @@ import java.util.List;
 
 @RestController
 public class VehicleController{
-    @Autowired VehicleService ser;
+    @Autowired VehicleService vehii;
 @PostMapping("/POST")
-public Vehicle dopost(@RequestBody Vehicle stu){
-    return ser.postdata(stu);
+public Vehicle dopost(@RequestBody Vehicle ve){
+    return vehii.createVehicle(ve);
 
 }
-@GetMapping("/get")
-public List<Studententity>getvalue(){
-    return ser.getAllData();
+@GetMapping("/GET/{id}")
+ public Vehicle getVehicleById(Long id){
+    return vehii.getAllData();
 }
 
 }
