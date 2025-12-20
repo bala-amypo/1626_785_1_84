@@ -28,9 +28,14 @@ public Vehicle dopost(@RequestBody Vehicle ve){
     return vehii.getVehicleByVin(String vin);
 }
 @GetMapping("/GET/owner/{ownerId}")
- public Vehicle getvinVehicle(String vin){
-    return vehii.getVehicleByVin(String vin);
+ public Vehicle getownerIdVehicle(Long ownerId){
+    return vehii.getVehicleByOwner(Long ownerId);
 }
+@PutMapping("PUT/{id}")
+public Studententity putvalue(@PathVariable int id, @RequestBody Studententity entity){
+    return ser.UpdateData(id,entity);
+}
+
 
 }
 
