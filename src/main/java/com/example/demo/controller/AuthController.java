@@ -11,11 +11,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
+// @RestController
+// public class AuthController{
+// @Autowired UserService userr;
+// @PostMapping("/POSTT")
+// public User Userpost(@RequestBody User reg){
+//     return userr.createGarage(reg);
+// }
+// }
 @RestController
-public class AuthController{
-@Autowired UserService userr;
-@PostMapping("/POSTT")
-public User Userpost(@RequestBody User reg){
-    return userr.createGarage(reg);
-}
+public class AuthController {
+
+    private final UserService userr;
+
+    public AuthController(UserService userr) {
+        this.userr = userr;
+    }
+
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        return userr.createUser(user); 
+    }
 }
