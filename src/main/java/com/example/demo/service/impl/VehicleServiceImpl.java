@@ -38,12 +38,14 @@ public class VehicleServiceImpl implements VehicleService {
         return v.findAll();
     }
 
+  
     @Override
-    public void deactivateVehicle(Long id) {
-        Vehicle vehicle = v.findById(id).orElse(null);
-        if (vehicle != null) {
-            vehicle.setActive(false);
-            v.save(vehicle);
-        }
+public void deactivateVehicle(Long id) {
+    Vehicle vehicle = v.findById(id).orElse(null);
+    if (vehicle != null) {
+        vehicle.setIsactive(false);  
+        v.save(vehicle);
     }
+}
+
 }
