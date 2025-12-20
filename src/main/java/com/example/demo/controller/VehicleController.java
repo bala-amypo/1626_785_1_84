@@ -32,9 +32,10 @@ public Vehicle dopost(@RequestBody Vehicle ve){
     return vehii.getVehicleByOwner(ownerId);
 }
 @PutMapping("PUT/{id}")
-public void putVehicle(@PathVariable Long id){
-     vehii.deactivateVehicle(id);
+public void deactivateVehicle(@PathVariable Long id) {
+    vehicleService.deactivateVehicle(id);
 }
+
 }
 
 
