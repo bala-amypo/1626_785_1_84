@@ -56,7 +56,6 @@ public class ServiceEntryServiceImpl implements ServiceEntryService {
     @Override
     public ServiceEntry createServiceEntry(ServiceEntry entry) {
 
-        // ✅ Fetch managed entities
         Garage garage = garageRepository.findById(
                 entry.getGarage().getId()
         ).orElseThrow(() -> new RuntimeException("Garage not found"));
@@ -65,7 +64,7 @@ public class ServiceEntryServiceImpl implements ServiceEntryService {
                 entry.getVehicle().getId()
         ).orElseThrow(() -> new RuntimeException("Vehicle not found"));
 
-        // ✅ Attach managed entities
+       
         entry.setGarage(garage);
         entry.setVehicle(vehicle);
 
