@@ -3,6 +3,6 @@ import com.example.demo.entity.Vehicle;
 import java.util.List;
 public interface VehicleService{
     Vehicle createVehicle(Vehicle vehicle);
-    List<Vehicle>getVehicleByI();
-    
+    List<Vehicle>getVehicleById(Long id);
+      List<Vehicle>getVehicleByVin(Long id);
 }
