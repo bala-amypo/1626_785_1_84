@@ -20,5 +20,13 @@ public class ServiceEntryServiceImpl implements ServiceEntryService{
     public ServiceEntry getServiceEntryById(Long id){
       return s.findById(id).orElse(null);
      }
-     
+    @Override
+    public List<ServiceEntry>getEntriesForVehicle(Long vehicleId){
+      return g.findAll();
+     }
+     @Override
+    public ServiceEntry getEntriesByGarage(Long garageId) {
+      return s.findById(id).orElse(null);
+     }
+
 }
