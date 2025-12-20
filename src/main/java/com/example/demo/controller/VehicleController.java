@@ -3,8 +3,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import com.example.demo.entity.Studententity;
-import com.example.demo.service.Studentservice;
+import com.example.demo.entity.Vehicle;
+import com.example.demo.service.VehicleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,6 +34,7 @@ public Vehicle dopost(@RequestBody Vehicle ve){
 @PutMapping("PUT/{id}")
 public Studententity putVehicle(@PathVariable Long id){
     return vehii.deactivateVehicle(id);
+}
 }
 
 
