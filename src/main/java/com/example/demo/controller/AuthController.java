@@ -25,7 +25,7 @@ public class AuthController {
         return userr.createUser(user); 
     }
     @GetMapping("/GETTReg")
-    public List<User> getAll{
-    return userr.getAllUser();;
+    public List<User>getAll(){
+    return userr.getAllUser();
 }
 }
