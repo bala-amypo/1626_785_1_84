@@ -32,7 +32,7 @@ public class VehicleServiceImpl implements VehicleService{
          Vehicle vehicle=v.findById(id).orElse(null);
          if(vehicle!=null){
             vehicle.setIsactive(false);
-            v.save()
+            v.save(vehicle);
          }
     }
 
