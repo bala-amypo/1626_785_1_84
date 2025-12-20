@@ -28,7 +28,7 @@ public Vehicle dopost(@RequestBody Vehicle ve){
     return vehii.getVehicleByVin(vin);
 }
 @GetMapping("/GET/owner/{ownerId}")
- public Vehicle getownerIdVehicle(Long ownerId){
+ public List<Vehicle> getownerIdVehicle(Long ownerId){
     return vehii.getVehicleByOwner(ownerId);
 }
 @PutMapping("PUT/{id}")
