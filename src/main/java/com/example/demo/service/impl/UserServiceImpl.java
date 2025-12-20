@@ -25,11 +25,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(Long id) {
-        return u.findById(id).orElse(null);
-    }
-
-    @Override
     public List<User> getAllUser() {
         return u.findAll();
     }

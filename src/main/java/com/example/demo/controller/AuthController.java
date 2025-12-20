@@ -24,4 +24,8 @@ public class AuthController {
     public String register(@RequestBody User user) {
         return userr.createUser(user); 
     }
+    @GetMapping("/GETTReg")
+    public List<User> getAll{
+    return userr.getAllUser();;
+}
 }
