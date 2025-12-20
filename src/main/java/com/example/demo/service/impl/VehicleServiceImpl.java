@@ -28,7 +28,7 @@ public class VehicleServiceImpl implements VehicleService{
     Vehicle getVehicleByOwner(Long ownerId){
         return v.findAll();
     }
-
+    
 
 }
 
