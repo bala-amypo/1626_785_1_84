@@ -40,6 +40,7 @@ private Vehicle vehicle;
 private Garage garage;
 
 @NotBlank
+@NotNull
 private String serviceType;
 
 @NotNull
@@ -48,7 +49,11 @@ private LocalDate serviceDate;
 @NotNull
 @Positive
 private int odometerReading;
+
+@NotNull
 private String description;
+
+@NotNull
 private LocalDateTime recordedAt;
 
     @PrePersist
