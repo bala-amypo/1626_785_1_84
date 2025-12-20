@@ -12,7 +12,7 @@ public class VerificationLogController{
 
     private final VerificationLogService ver;
 
-    public AuthController(VerificationLogService ver) {
+    public VerificationLogController(VerificationLogService ver) {
         this.ver = ver;
     }
 
@@ -25,8 +25,8 @@ public class VerificationLogController{
     return ver.getLogsForEntry(entryId);
 }
 @GetMapping("/gettverification/{id}")
-public Garage getGarage(Long id){
-    return garr.getGarageById(id);
+public VerificationLog getverification(Long id){
+    return ver.getLogById(id);
 }
 
     
