@@ -16,4 +16,9 @@ public class ServiceEntryServiceImpl implements ServiceEntryService{
     public ServiceEntry createServiceEntry(ServiceEntry entry) {
         return s.save(entry);
     }
+    @Override
+    public ServiceEntry getServiceEntryById(Long id){
+      return s.findById(id).orElse(null);
+     }
+     
 }
