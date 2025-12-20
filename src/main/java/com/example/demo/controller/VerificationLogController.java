@@ -1,14 +1,19 @@
 package com.example.demo.controller;
+
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.VerificationLog;
+import com.example.demo.service.VerificationLogService;
+
 @RestController
-public class VerificationLogController{
+public class VerificationLogController {
 
     private final VerificationLogService ver;
 
@@ -16,18 +21,18 @@ public class VerificationLogController{
         this.ver = ver;
     }
 
-    @PostMapping("/verification")
-    public VerificationLog createLog(VerificationLog log){
-        return ver.createVerificationLog(log); 
+    @PostMapping("/POSTverification")
+    public VerificationLog createLog(@RequestBody VerificationLog log) {
+        return ver.createVerificationLog(log);
     }
-    @GetMapping("/GETverification")
-    public List<VerificationLog> getLog(Long entryId){
-    return ver.getLogsForEntry(entryId);
-}
-@GetMapping("/gettverification/{id}")
-public VerificationLog getverification(Long id){
-    return ver.getLogById(id);
-}
 
-    
+    @GetMapping("/GETTverification")
+    public List<VerificationLog> getLog(@RequestParam Long entryId) {
+        return ver.getLogsForEntry(entryId);
+    }
+
+    @GetMapping("/Gettverification/{id}")
+    public VerificationLog getVerification(@PathVariable Long id) {
+        return ver.getLogById(id);
+    }
 }
