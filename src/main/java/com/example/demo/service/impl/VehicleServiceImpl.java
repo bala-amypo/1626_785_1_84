@@ -24,11 +24,11 @@ public class VehicleServiceImpl implements VehicleService{
       return v.findAll();
      }
     @Override
-    public 
-    Vehicle getVehicleByOwner(Long ownerId){
+    public Vehicle getVehicleByOwner(Long ownerId){
         return v.findAll();
     }
-    
+    @Override
+    public 
 
 }
 
