@@ -22,7 +22,7 @@ public class VehicleServiceImpl implements VehicleService{
      }
     @Override
     public Vehicle getVehicleByVin(String vin) {
-      return v.findById(vin);
+      return v.findById(vin).orElse(null);
      }
     @Override
     public  List <Vehicle> getVehicleByOwner(Long ownerId){
