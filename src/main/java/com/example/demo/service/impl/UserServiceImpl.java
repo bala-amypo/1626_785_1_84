@@ -14,7 +14,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserService createGarage(UserService reg) {
-        return g.save(garage);
+    public String createUserService(UserService reg) {
+        u.save(reg);
+        return "Registed Sucessfully";
     }
+    
+
 }
