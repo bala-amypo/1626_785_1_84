@@ -18,8 +18,14 @@ public class ServiceEntryController {
         this.serr = serr;
     }
 
-    @PostMapping(/POSTTT)
+    @PostMapping("/POSTTT")
     public ServiceEntry createServiceEntry(@RequestBody ServiceEntry entry) {
         return serr.createServiceEntry(entry);
     }
+    @GetMapping("/GETTT/vehicle/{vehicleId}")
+    public List<ServiceEntry> getvehicleId(@PathVariable Long ownerId) {
+        return serr.getEntriesForVehicle(Long vehicleId);
+    }
+    
+
 }
