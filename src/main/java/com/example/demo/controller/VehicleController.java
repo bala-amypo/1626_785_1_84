@@ -23,6 +23,14 @@ public Vehicle dopost(@RequestBody Vehicle ve){
  public Vehicle getVehicle(Long id){
     return vehii.getVehicleById(Long id);
 }
+@GetMapping("/GET/vin/{vin}")
+ public Vehicle getvinVehicle(String vin){
+    return vehii.getVehicleByVin(String vin);
+}
+@GetMapping("/GET/owner/{ownerId}")
+ public Vehicle getvinVehicle(String vin){
+    return vehii.getVehicleByVin(String vin);
+}
 
 }
 
