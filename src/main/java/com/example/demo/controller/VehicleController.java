@@ -7,39 +7,37 @@ import com.example.demo.entity.Vehicle;
 import com.example.demo.service.VehicleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 @RestController
-public class VehicleController{
-    @Autowired VehicleService vehii;
-@PostMapping("/POST")
-public Vehicle dopost(@RequestBody Vehicle ve){
-    return vehii.createVehicle(ve);
+public class VehicleController {
 
+    @Autowired 
+    VehicleService vehii;
+
+    @PostMapping("/POST")
+    public Vehicle dopost(@RequestBody Vehicle ve) {
+        return vehii.createVehicle(ve);
+    }
+
+    @GetMapping("/GET/{id}")
+    public Vehicle getVehicle(@PathVariable Long id) {
+        return vehii.getVehicleById(id);
+    }
+
+    @GetMapping("/GET/vin/{vin}")
+    public Vehicle getvinVehicle(@PathVariable String vin) {
+        return vehii.getVehicleByVin(vin);
+    }
+
+    @GetMapping("/GET/owner/{ownerId}")
+    public List<Vehicle> getownerIdVehicle(@PathVariable Long ownerId) {
+        return vehii.getVehicleByOwner(ownerId);
+    }
+
+    @PutMapping("/PUT/{id}")
+    public void deactivateVehicle(@PathVariable Long id) {
+        vehii.deactivateVehicle(id);
+    }
 }
-@GetMapping("/GET/{id}")
- public Vehicle getVehicle(Long id){
-    return vehii.getVehicleById(id);
-}
-@GetMapping("/GET/vin/{vin}")
- public Vehicle getvinVehicle(String vin){
-    return vehii.getVehicleByVin(vin);
-}
-@GetMapping("/GET/owner/{ownerId}")
- public List<Vehicle> getownerIdVehicle(Long ownerId){
-    return vehii.getVehicleByOwner(ownerId);
-}
-@PutMapping("PUT/{id}")
-public void deactivateVehicle(@PathVariable Long id) {
-    vehicleService.deactivateVehicle(id);
-}
-
-}
-
-
-
-
-
-
