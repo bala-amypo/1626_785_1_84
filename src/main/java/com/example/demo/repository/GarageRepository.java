@@ -1,5 +1,5 @@
-// package com.example.demo.repository;
+package com.example.demo.repository;
 
-// public interface GarageRepository extends JpaRepository <Garage,Long>{
+public interface GarageRepository extends JpaRepository <Garage,Long>{
     
-// }
+}
