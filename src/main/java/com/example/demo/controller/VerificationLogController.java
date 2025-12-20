@@ -27,7 +27,7 @@ public class VerificationLogController {
     }
 
     @GetMapping("/GETTverification")
-    public List<VerificationLog> getLog(@Request Long entryId) {
+    public List<VerificationLog> getLog(@PathVariable Long entryId) {
         return ver.getLogsForEntry(entryId);
     }
 

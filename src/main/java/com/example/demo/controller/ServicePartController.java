@@ -19,15 +19,15 @@ public class ServicePartController{
     }
 
     @PostMapping("/POSTPart")
-    public ServicePartController createPart(@RequestBody ServicePart part) {
-        return ver.;
+    public ServicePart createPart(@RequestBody ServicePart part) {
+        return server.createServicePart(ServicePart part);
     }
 
     
 
     @GetMapping("/Gettverification/{id}")
-    public VerificationLog getVerification(@PathVariable Long id) {
-        return ver.getLogById(id);
+    public ServicePart getarts(@PathVariable Long id) {
+        return server.getLogById(id);
     }
 }
 
