@@ -1,4 +1,4 @@
-package com.example.demo.service.Serviceimpl;
+package com.example.demo.service.impl;
 import org.springframework.stereotype.Service;
 import com.example.demo.service.Studentservice;
 import  com.example.demo.entity.Studententity;
@@ -6,7 +6,10 @@ import  com.example.demo.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class VehicleServiceImpl implements VehicleService{
-    @Autowired VehicleRepository v;
+    private final VehicleRepository v;
+    public VehicleServiceImpl(VehicleRepository v){
+        this.v=v;
+    }
     @Override
     public  Vehicle createVehicle(Vehicle vehicle){
         return v.save(vehicle);
@@ -25,7 +28,7 @@ public class VehicleServiceImpl implements VehicleService{
     Vehicle getVehicleByOwner(Long ownerId){
         return v.findAll();
     }
-    
+
 
 }
 
