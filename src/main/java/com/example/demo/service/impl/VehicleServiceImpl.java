@@ -4,6 +4,7 @@ import com.example.demo.service.VehicleService;
 import  com.example.demo.entity.Vehicle;
 import  com.example.demo.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
 public class VehicleServiceImpl implements VehicleService{
     private final VehicleRepository v;
