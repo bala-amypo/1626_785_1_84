@@ -7,14 +7,15 @@ import com.example.demo.service.VerificationLogService;
 @Service
 public class VerificationLogServiceImpl implements VerificationLogService{
     
-    private final VerificationLogRepository veri;
+    private final VerificationLogRepository verify;
 
-    public VerificServiceImpl(VerificationLogRepository g) {
-        this.g = g;
+    public VerificationLogServiceImpl(VerificationLogRepository verify) {
+        this.verify = verify;
     }
 
     @Override
-    public Garage createGarage(Garage garage) {
-        return g.save(garage);
+    public  VerificationLog createVerificationLog(VerificationLog log) {
+        return verify.save(log);
     }
+    
 }
