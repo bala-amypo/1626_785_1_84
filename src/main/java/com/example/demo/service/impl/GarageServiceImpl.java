@@ -36,6 +36,14 @@ public Garage UpdateGarage(Long id, Garage garage){
     public List<Garage>getAllGarage(){
       return g.findAll();
      }
+     @Override
+public void deactivateGarage(Long id) {
+    Garage garage = g.findById(id).orElse(null);
+    if (garage != null) {
+        garage.setIsactive(false);  
+        g.save(garage);
+    }
+}
 
 
 

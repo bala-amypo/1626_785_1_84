@@ -6,5 +6,5 @@ public interface GarageService {
  Garage UpdateGarage(Long id,Garage garage);
  Garage getGarageById(Long id);
  List<Garage>getAllGarage();
-    
+void deactivateGarage(Long id);
 } 
