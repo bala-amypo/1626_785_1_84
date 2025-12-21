@@ -75,35 +75,5 @@ import com.example.demo.service.ServiceEntryService;
     //     return s.findByGarage_Id(garageId);
     // }
     @Service
-public class ServiceEntryServiceImpl implements ServiceEntryService {
-
-    private final ServiceEntryRepository s;
-    private final GarageRepository garageRepo;
-    private final VehicleRepository vehicleRepo;
-
-    public ServiceEntryServiceImpl(
-            ServiceEntryRepository s,
-            GarageRepository garageRepo,
-            VehicleRepository vehicleRepo) {
-        this.s = s;
-        this.garageRepo = garageRepo;
-        this.vehicleRepo = vehicleRepo;
-    }
-
-    @Override
-    public ServiceEntry createServiceEntry(ServiceEntry entry) {
-
-        Garage garage = garageRepo.findById(entry.getGarage().getId())
-                .orElseThrow(() -> new RuntimeException("Garage not found"));
-
-        Vehicle vehicle = vehicleRepo.findById(entry.getVehicle().getId())
-                .orElseThrow(() -> new RuntimeException("Vehicle not found"));
-
-        entry.setGarage(garage);
-        entry.setVehicle(vehicle);
-
-        return s.save(entry);
-    }
-}
 
 // }
