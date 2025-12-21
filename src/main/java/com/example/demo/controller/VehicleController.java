@@ -16,8 +16,8 @@ public class VehicleController {
     // @Autowired VehicleService vehii;
      private final VehicleService vehii;
 
-    public VehicleServiceImpl(GarageRepository g) {
-        this.g = g;
+    public VehicleServiceImpl(VehicleService vehii) {
+        this.vehii = vehii;
     }
 
 
