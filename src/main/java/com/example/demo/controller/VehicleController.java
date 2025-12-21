@@ -16,7 +16,7 @@ public class VehicleController {
     // @Autowired VehicleService vehii;
      private final VehicleService vehii;
 
-    public VehicleServiceImpl(VehicleService vehii) {
+    public VehicleServiceController(VehicleService vehii) {
         this.vehii = vehii;
     }
 
