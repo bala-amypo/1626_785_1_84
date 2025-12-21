@@ -13,13 +13,7 @@ import java.util.List;
 @RestController
 public class VehicleController {
 
-    // @Autowired VehicleService vehii;
-     private final VehicleService vehii;
-
-    public VehicleServiceController(VehicleService vehii) {
-        this.vehii = vehii;
-    }
-
+    @Autowired VehicleService vehii;
 
     @PostMapping("/POST")
     public Vehicle dopost(@RequestBody Vehicle ve) {
