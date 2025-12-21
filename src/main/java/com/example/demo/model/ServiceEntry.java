@@ -27,12 +27,12 @@ public class ServiceEntry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//   @ManyToOne
-// @JoinColumn(name = "vehicle_id", nullable = false)
+ //@ManyToOne
+ //@JoinColumn(name = "vehicle_id", nullable = false)
 private Vehicle vehicle;
 
-// @ManyToOne
-// @JoinColumn(name = "garage_id", nullable = false)
+ //@ManyToOne
+ //@JoinColumn(name = "garage_id", nullable = false)
 private Garage garage;
 
 @NotBlank
