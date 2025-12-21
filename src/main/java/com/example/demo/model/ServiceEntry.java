@@ -5,8 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.JoinColumn;
+//import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -27,12 +27,12 @@ public class ServiceEntry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-  @ManyToOne
-@JoinColumn(name = "vehicle_id", nullable = false)
+//   @ManyToOne
+// @JoinColumn(name = "vehicle_id", nullable = false)
 private Vehicle vehicle;
 
-@ManyToOne
-@JoinColumn(name = "garage_id", nullable = false)
+// @ManyToOne
+// @JoinColumn(name = "garage_id", nullable = false)
 private Garage garage;
 
 @NotBlank
