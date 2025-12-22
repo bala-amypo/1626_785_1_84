@@ -15,7 +15,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-import com.example.demo.model.Vehicle;
+import com.example.demo.entity.Vehicle;
 
 @Entity
 @Data

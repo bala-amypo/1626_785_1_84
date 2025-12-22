@@ -1,8 +1,8 @@
-package com.example.demo.exception;
+// package com.example.demo.exception;
 
-public class VehicleNotFoundException extends RuntimeException {
+// public class VehicleNotFoundException extends RuntimeException {
 
-    public VehicleNotFoundException(String message) {
-        super(message);
-    }
-}
+//     public VehicleNotFoundException(String message) {
+//         super(message);
+//     }
+// }
