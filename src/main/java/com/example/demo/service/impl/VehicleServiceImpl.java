@@ -16,10 +16,6 @@ public class VehicleServiceImpl implements VehicleService {
         this.v = v;
     }
 
-    @Override
-    public Vehicle createVehicle(Vehicle vehicle) {
-        return v.save(vehicle);
-    }
 
     @Override
     public Vehicle getVehicleById(Long id) {
