@@ -44,6 +44,10 @@ public void deactivateGarage(Long id) {
         g.save(garage);
     }
 }
+@Override
+public Vehicle createGarage(Vehicle vehicle) {
+
+}
 
 
 

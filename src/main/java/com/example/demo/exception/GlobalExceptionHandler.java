@@ -28,7 +28,8 @@ public class GlobalExceptionHandler {
     //     return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
     // }
      @ExceptionHandler(GarageException.class)
-    public ResponseEntity<String> handleDuplicateVinException(DuplicateVinException ex) {
+    public ResponseEntity<String> handleGarageException(GarageException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
+    
 }
