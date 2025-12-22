@@ -13,5 +13,18 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
 
-    @
+    @ExceptionHandler(OdometerValidationException.class)
+    public ResponseEntity<String> handleOdometerException(OdometerValidationException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(FutureServiceDateException.class)
+    public ResponseEntity<String> handleFutureDateException(FutureServiceDateException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ImmutableRecordException.class)
+    public ResponseEntity<String> handleImmutableException(ImmutableRecordException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
+    }
 }
