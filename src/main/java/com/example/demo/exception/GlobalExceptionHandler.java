@@ -27,9 +27,9 @@ public class GlobalExceptionHandler {
     // public ResponseEntity<String> handleImmutableException(ImmutableRecordException ex) {
     //     return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
     // }
-     @ExceptionHandler(GarageException.class)
-    public ResponseEntity<String> handleGarageException(GarageException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
-    }
-    
+    //  @ExceptionHandler(GarageException.class)
+    // public ResponseEntity<String> handleGarageException(GarageException ex) {
+    //     return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
+    // }
+
 }

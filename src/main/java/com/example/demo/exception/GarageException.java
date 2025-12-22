@@ -1,8 +1,8 @@
-package com.example.demo.exception;
+// package com.example.demo.exception;
 
-public class GarageException extends RuntimeException {
+// public class GarageException extends RuntimeException {
 
-    public GarageException(String message) {
-        super(message);
-    }
-}
+//     public GarageException(String message) {
+//         super(message);
+//     }
+// }
