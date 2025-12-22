@@ -12,4 +12,6 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleDuplicateVinException(DuplicateVinException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
+
+    @
 }
