@@ -1,8 +1,8 @@
-package com.example.demo.exception;
+// package com.example.demo.exception;
 
-public class ImmutableRecordException extends RuntimeException {
+// public class ImmutableRecordException extends RuntimeException {
 
-    public ImmutableRecordException(String message) {
-        super(message);
-    }
-}
+//     public ImmutableRecordException(String message) {
+//         super(message);
+//     }
+// }
