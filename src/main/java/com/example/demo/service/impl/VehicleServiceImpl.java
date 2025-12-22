@@ -47,12 +47,16 @@ public void deactivateVehicle(Long id) {
     }
 }
 @Override
-public Vehicle findByVinOrThrow(String vin) {
-    Vehicle vehicle = v.findByVin(vin);
-    if (vehicle == null) {
-        throw new VehicleNotFoundException("Given VIN is not registered");
+public Vehicle createVehicle(Vehicle vehicle) {
+
+    Vehicle existing = v.findByVin(vehicle.getVin());
+    if (existing != null) {
+        throw new DuplicateVinException(
+            "Vehicle with VIN '" + vehicle.getVin() + "' already exists"
+        );
     }
-    return vehicle;
+
+    return v.save(vehicle);
 }
 
 }
