@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @NotNull
     @Column(name = "vin", unique = true)
     private String vin;
