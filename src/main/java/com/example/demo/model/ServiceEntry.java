@@ -60,18 +60,20 @@
 // }
 package com.example.demo.model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import java.util.List;
 
-import com.example.demo.entity.Vehicle;  // ✅ FIX
-import com.example.demo.entity.Garage;   // ✅ FIX
+import com.example.demo.entity.Vehicle;  
+import com.example.demo.model.Garage;   
 
 @Entity
 @Data
