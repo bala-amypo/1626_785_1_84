@@ -4,6 +4,7 @@ import com.example.demo.service.VehicleService;
 import  com.example.demo.entity.Vehicle;
 import  com.example.demo.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.exception.DuplicateVinException;
 
 import java.util.List;
 
