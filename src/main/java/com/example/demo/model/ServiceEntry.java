@@ -1,12 +1,8 @@
-
 package com.example.demo.model;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
