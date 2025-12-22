@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(VehicleNotFoundException.class)
-    public ResponseEntity<String> handleVehicleNotFoundException(VehicleNotFoundException ex) {
+    @ExceptionHandler(DuplicateVinException.class)
+    public ResponseEntity<String> handleVehicleNotFoundException(DuplicateVinException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_GATEWAY);
     }
 
