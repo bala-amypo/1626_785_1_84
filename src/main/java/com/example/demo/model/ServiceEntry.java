@@ -14,7 +14,6 @@ import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-
 import com.example.demo.model.Vehicle;
 
 @Entity
