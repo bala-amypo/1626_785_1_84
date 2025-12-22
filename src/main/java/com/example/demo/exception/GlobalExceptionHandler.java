@@ -9,11 +9,6 @@ import org.springframework.http.HttpStatus;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(DuplicateVinException.class)
-    public ResponseEntity<String> handleVehicleNotFoundException(DuplicateVinException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_GATEWAY);
-    }
-
-    @ExceptionHandler(DuplicateVinException.class)
     public ResponseEntity<String> handleDuplicateVinException(DuplicateVinException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
