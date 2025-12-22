@@ -39,7 +39,6 @@
 // }
 
 package com.example.demo.model;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -62,7 +61,6 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // VIN is unique & fixed length
     @NotBlank(message = "VIN cannot be empty")
     @Size(min = 17, max = 17, message = "VIN must be exactly 17 characters")
     @Column(unique = true, nullable = false)
