@@ -39,9 +39,9 @@ public class Vehicle {
 
 
     @PrePersist
-    public void on() {
-        if (this.verifiedAt == null) {
-            this.verifiedAt = LocalDateTime.now();
+    public void onCreate(){
+        if (this.createdAt == null) {
+            this.createdAt = LocalDateTime.now();
         }
     }
 }
