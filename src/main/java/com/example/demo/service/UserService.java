@@ -1,10 +1,10 @@
 
-package com.example.demo.service;
+// package com.example.demo.service;
 
-import java.util.List;
-import com.example.demo.model.User;
+// import java.util.List;
+// import com.example.demo.model.User;
 
-public interface UserService {
-    String createUser(User user);
-    List<User> getAllUser();
-}
+// public interface UserService {
+//     String createUser(User user);
+//     List<User> getAllUser();
+// }

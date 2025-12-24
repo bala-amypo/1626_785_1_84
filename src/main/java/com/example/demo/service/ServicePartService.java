@@ -1,11 +1,11 @@
-package com.example.demo.service;
+// package com.example.demo.service;
 
-import java.util.List;
+// import java.util.List;
 
-import com.example.demo.model.ServicePart;
+// import com.example.demo.model.ServicePart;
 
-public interface ServicePartService {
-    ServicePart createServicePart(ServicePart part);
-    List<ServicePart> getPartsForEntry(Long entryId);
-    ServicePart getPartById(Long id);
-}
+// public interface ServicePartService {
+//     ServicePart createServicePart(ServicePart part);
+//     List<ServicePart> getPartsForEntry(Long entryId);
+//     ServicePart getPartById(Long id);
+// }
