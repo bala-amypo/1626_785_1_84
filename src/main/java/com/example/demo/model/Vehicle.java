@@ -1,40 +1,47 @@
-package com.example.demo.entity;
-import java.time.LocalDateTime;
+package com.example.demo.model;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Column;
 import jakarta.persistence.PrePersist;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Entity
+@Table(name = "vehicles", uniqueConstraints = { @UniqueConstraint(columnNames = { "vin" }) })
 @Data
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Vehicle {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
-    @Column(name = "vin", unique = true)
+
+    @Column(nullable = false, unique = true)
     private String vin;
+
     private String make;
     private String model;
-    private int year;
-    @NotNull
-    private long ownerId;
-    private Boolean isactive=true;
-    private LocalDateTime created;
+
+    @Column(nullable = false)
+    private Long ownerId;
+
+    @Column(nullable = false)
+    private Boolean active;
+
+
     @PrePersist
-    public void Oncreate() {
-        LocalDateTime now = LocalDateTime.now();
-        if (this.created == null) {
-            this.created = now;
+    public void on() {
+        if (this.verifiedAt == null) {
+            this.verifiedAt = LocalDateTime.now();
         }
     }
-    
 }
-
