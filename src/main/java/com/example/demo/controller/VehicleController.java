@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Vehicle;
+import com.example.demo.model.Vehicle;
 import com.example.demo.service.VehicleService;
 
 import java.util.List;
