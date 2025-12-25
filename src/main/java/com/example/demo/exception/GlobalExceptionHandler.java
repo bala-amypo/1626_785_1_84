@@ -52,11 +52,17 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<ApiError>(err, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ApiError> handleBadRequest(IllegalArgumentException ex) {
-        ApiError err = new ApiError(LocalDateTime.now(), 400, "BAD_REQUEST", ex.getMessage());
-        return new ResponseEntity<ApiError>(err, HttpStatus.BAD_REQUEST);
+    // @ExceptionHandler(IllegalArgumentException.class)
+    // public ResponseEntity<ApiError> handleBadRequest(IllegalArgumentException ex) {
+    //     ApiError err = new ApiError(LocalDateTime.now(), 400, "BAD_REQUEST", ex.getMessage());
+    //     return new ResponseEntity<ApiError>(err, HttpStatus.BAD_REQUEST);
+    // }
+
+ @ExceptionHandler(DuplicateVinException.class)
+    public ResponseEntity<String> handleDuplicateVinException(DuplicateVinException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
+
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ApiError> handleGeneric(RuntimeException ex) {

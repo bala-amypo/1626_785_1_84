@@ -1,56 +1,59 @@
-package com.example.demo.service.impl;
-import com.example.demo.model.Vehicle;
-import com.example.demo.repository.VehicleRepository;
-import com.example.demo.service.VehicleService;
-import jakarta.persistence.EntityNotFoundException;
+// package com.example.demo.service.impl;
 import org.springframework.stereotype.Service;
+import com.example.demo.service.VehicleService;
+import  com.example.demo.entity.Vehicle;
+import  com.example.demo.repository.VehicleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.exception.DuplicateVinException;
 
 import java.util.List;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
 
-    private final VehicleRepository vehicleRepository;
+    private final VehicleRepository v;
 
-    public VehicleServiceImpl(VehicleRepository vehicleRepository) {
-        this.vehicleRepository = vehicleRepository;
+    public VehicleServiceImpl(VehicleRepository v) {
+        this.v = v;
     }
 
-    @Override
-    public Vehicle createVehicle(Vehicle vehicle) {
-        if (vehicle == null || vehicle.getVin() == null) {
-            throw new IllegalArgumentException("VIN");
-        }
-        if (vehicleRepository.findByVin(vehicle.getVin()).isPresent()) {
-            throw new IllegalArgumentException("VIN");
-        }
-        if (vehicle.getActive() == null) {
-            vehicle.setActive(true);
-        }
-        return vehicleRepository.save(vehicle);
-    }
 
     @Override
     public Vehicle getVehicleById(Long id) {
-        return vehicleRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Vehicle not found"));
+        return v.findById(id).orElse(null);
     }
+
 
     @Override
     public Vehicle getVehicleByVin(String vin) {
-        return vehicleRepository.findByVin(vin)
-                .orElseThrow(() -> new EntityNotFoundException("Vehicle not found"));
+        return v.findByVin(vin);   
     }
 
     @Override
-    public List<Vehicle> getVehiclesByOwner(Long ownerId) {
-        return vehicleRepository.findByOwnerId(ownerId);
+    public List<Vehicle> getVehicleByOwner(Long ownerId) {
+        return v.findAll();
     }
 
+  
     @Override
-    public void deactivateVehicle(Long id) {
-        Vehicle v = getVehicleById(id);
-        v.setActive(false);
-        vehicleRepository.save(v);
+public void deactivateVehicle(Long id) {
+    Vehicle vehicle = v.findById(id).orElse(null);
+    if (vehicle != null) {
+        vehicle.setIsactive(false);  
+        v.save(vehicle);
     }
+}
+@Override
+public Vehicle createVehicle(Vehicle vehicle) {
+
+    Vehicle existing = v.findByVin(vehicle.getVin());
+    if (existing != null) {
+        throw new DuplicateVinException(
+            "Vehicle with VIN '" + vehicle.getVin() + "' already exists"
+        );
+    }
+
+    return v.save(vehicle);
+}
+
 }
