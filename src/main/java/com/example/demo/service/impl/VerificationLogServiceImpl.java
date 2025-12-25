@@ -1,34 +1,58 @@
-// package com.example.demo.service.impl;
+package com.example.demo.service.impl;
 
-// import java.util.List;
+import com.example.demo.model.ServiceEntry;
+import com.example.demo.model.VerificationLog;
+import com.example.demo.repository.ServiceEntryRepository;
+import com.example.demo.repository.VerificationLogRepository;
+import com.example.demo.service.VerificationLogService;
+import jakarta.persistence.EntityNotFoundException;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.List;
+import org.springframework.stereotype.Service;
 
-// import org.springframework.stereotype.Service;
+@Service
+public class VerificationLogServiceImpl implements VerificationLogService {
 
-// import com.example.demo.model.VerificationLog;
-// import com.example.demo.repository.VerificationLogRepository;
-// import com.example.demo.service.VerificationLogService;
+    private final VerificationLogRepository logRepo;
+    private final ServiceEntryRepository entryRepo;
 
-// @Service
-// public class VerificationLogServiceImpl implements VerificationLogService {
+    public VerificationLogServiceImpl(VerificationLogRepository logRepo, ServiceEntryRepository entryRepo) {
+        this.logRepo = logRepo;
+        this.entryRepo = entryRepo;
+    }
 
-//     private final VerificationLogRepository verify;
+    @Override
+    public VerificationLog createLog(VerificationLog log) {
 
-//     public VerificationLogServiceImpl(VerificationLogRepository verify) {
-//         this.verify = verify;
-//     }
+        if (log == null || log.getServiceEntry() == null || log.getServiceEntry().getId() == null) {
+            throw new IllegalArgumentException("ServiceEntry not found");
+        }
 
-//     @Override
-//     public VerificationLog createVerificationLog(VerificationLog log) {
-//         return verify.save(log);
-//     }
+        ServiceEntry entry = entryRepo.findById(log.getServiceEntry().getId())
+                .orElseThrow(() -> new EntityNotFoundException("ServiceEntry not found"));
 
-//     @Override
-//     public List<VerificationLog> getLogsForEntry(Long entryId) {
-//         return verify.findAll(); // filtering can be added later
-//     }
+        log.setServiceEntry(entry);
 
-//     @Override
-//     public VerificationLog getLogById(Long id) {
-//         return verify.findById(id).orElse(null);
-//     }
-// }
+        if (log.getVerifiedAt() == null) {
+            log.setVerifiedAt(Timestamp.from(Instant.now()));
+        }
+
+        if (log.getVerifiedBySystem() == null) {
+            log.setVerifiedBySystem(true);
+        }
+
+        return logRepo.save(log);
+    }
+
+    @Override
+    public VerificationLog getLogById(Long id) {
+        return logRepo.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("VerificationLog not found"));
+    }
+
+    @Override
+    public List<VerificationLog> getLogsForEntry(Long entryId) {
+        return logRepo.findByServiceEntryId(entryId);
+    }
+}
