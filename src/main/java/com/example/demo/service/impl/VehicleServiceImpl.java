@@ -1,13 +1,16 @@
 package com.example.demo.service.impl;
 
-import org.springframework.stereotype.Service;
-
-import com.example.demo.service.VehicleService;
 import com.example.demo.entity.Vehicle;
-import com.example.demo.repository.VehicleRepository;
 import com.example.demo.exception.DuplicateVinException;
+import com.example.demo.repository.VehicleRepository;
+import com.example.demo.service.VehicleService;
+
+import jakarta.persistence.EntityNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
@@ -21,9 +24,9 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public Vehicle createVehicle(Vehicle vehicle) {
 
-        Vehicle existing = v.findByVin(vehicle.getVin());
-        if (existing != null) {
-            throw new DuplicateVinException("Vehicle with VIN '" + vehicle.getVin() + "' already exists");
+        Optional<Vehicle> existing = v.findByVin(vehicle.getVin());
+        if (existing.isPresent()) {
+            throw new DuplicateVinException("VIN already exists");
         }
 
         if (vehicle.getIsactive() == null) {
@@ -35,25 +38,23 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public Vehicle getVehicleById(Long id) {
-        return v.findById(id).orElse(null);
+        return v.findById(id).orElseThrow(() -> new EntityNotFoundException("Vehicle not found"));
     }
 
     @Override
     public Vehicle getVehicleByVin(String vin) {
-        return v.findByVin(vin);
+        return v.findByVin(vin).orElseThrow(() -> new EntityNotFoundException("Vehicle not found"));
     }
 
     @Override
     public List<Vehicle> getVehicleByOwner(Long ownerId) {
-        return v.findAll();
+        return v.findByOwnerId(ownerId);
     }
 
     @Override
     public void deactivateVehicle(Long id) {
-        Vehicle vehicle = v.findById(id).orElse(null);
-        if (vehicle != null) {
-            vehicle.setIsactive(false);
-            v.save(vehicle);
-        }
+        Vehicle vehicle = getVehicleById(id);
+        vehicle.setIsactive(false);
+        v.save(vehicle);
     }
 }

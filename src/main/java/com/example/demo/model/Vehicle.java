@@ -10,12 +10,10 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Builder;
 
 @Entity
 @Table(name = "vehicles")
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Vehicle {
@@ -24,11 +22,15 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String vin;
 
     private String make;
+
     private String model;
+
     private Long ownerId;
-    private Boolean isactive=true;
+
+    @Column(name = "active")
+    private Boolean isactive;
 }
