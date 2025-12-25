@@ -1,54 +1,57 @@
-// package com.example.demo.model;
-// import java.time.LocalDate;
-// import java.time.LocalDateTime;
-// import jakarta.persistence.*;
-// import jakarta.validation.constraints.*;
-// import lombok.Data;
-// import lombok.NoArgsConstructor;
-// import lombok.AllArgsConstructor;
+package com.example.demo.model;
 
-// import com.example.demo.entity.Vehicle;  
-// import com.example.demo.model.Garage;   
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Column;
 
-// @Entity
-// @Data
-// @NoArgsConstructor
-// @AllArgsConstructor
-// public class ServiceEntry {
+import org.hibernate.annotations.CreationTimestamp;
 
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private Long id;
+import lombok.Data;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
-//     @ManyToOne
-//     @JoinColumn(name = "vehicle_id", nullable = false)
-//     private Vehicle vehicle;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-//     @ManyToOne
-//     @JoinColumn(name = "garage_id", nullable = false)
-//     private Garage garage;
+@Entity
+@Table(name = "service_entries")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ServiceEntry {
 
-//     @NotBlank
-//     @NotNull
-//     private String serviceType;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-//     @NotNull
-//     private LocalDate serviceDate;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "vehicle_id", nullable = false)
+    private Vehicle vehicle;
 
-//     @NotNull
-//     @Positive
-//     private int odometerReading;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "garage_id", nullable = false)
+    private Garage garage;
 
-//     @NotNull
-//     private String description;
+    @Column(nullable = false)
+    private String serviceType;
 
-//     @NotNull
-//     private LocalDateTime recordedAt;
+    @Column(nullable = false)
+    private LocalDate serviceDate;
 
-//     @PrePersist
-//     public void Onrecord() {
-//         if (this.recordedAt == null) {
-//             this.recordedAt = LocalDateTime.now();
-//         }
-//     }
-// }
+    @Column(nullable = false)
+    private Integer odometerReading;
+
+    private String description;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime recordedAt;
+}
