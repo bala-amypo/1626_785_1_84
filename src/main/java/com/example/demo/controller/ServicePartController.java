@@ -1,35 +1,34 @@
-// package com.example.demo.controller;
-// import java.util.List;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RestController;
+package com.example.demo.controller;
 
-// import com.example.demo.model.ServicePart;
-// import com.example.demo.service.ServicePartService;
+import com.example.demo.model.ServicePart;
+import com.example.demo.service.ServicePartService;
 
-// @RestController
-// public class ServicePartController {
+import org.springframework.web.bind.annotation.*;
 
-//     private final ServicePartService server;
+import java.util.List;
 
-//     public ServicePartController(ServicePartService server) {
-//         this.server = server;
-//     }
+@RestController
+@RequestMapping("/api/service-parts")
+public class ServicePartController {
 
-//     @PostMapping("/part")
-//     public ServicePart createPart(@RequestBody ServicePart part) {
-//         return server.createServicePart(part);
-//     }
+    private final ServicePartService ser;
 
-//     @GetMapping("/part/entry/{entryId}")
-//     public List<ServicePart> getPart(@PathVariable Long entryId) {
-//         return server.getPartsForEntry(entryId);
-//     }
+    public ServicePartController(ServicePartService ser) {
+        this.ser = ser;
+    }
 
-//     @GetMapping("/part/{id}")
-//     public ServicePart getPartById(@PathVariable Long id) {
-//         return server.getPartById(id);
-//     }
-// }
+    @PostMapping
+    public ServicePart createPart(@RequestBody ServicePart part) {
+        return ser.createPart(part);
+    }
+
+    @GetMapping("/{id}")
+    public ServicePart getPartById(@PathVariable Long id) {
+        return ser.getPartById(id);
+    }
+
+    @GetMapping("/entry/{entryId}")
+    public List<ServicePart> getPartsForEntry(@PathVariable Long entryId) {
+        return ser.getPartsForEntry(entryId);
+    }
+}
