@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-import com.example.demo.entity.Vehicle;  
+import com.example.demo.model.Vehicle;  
 import com.example.demo.model.Garage;   
 
 @Entity
