@@ -1,7 +1,5 @@
 package com.example.demo.service.impl;
 
-import org.springframework.stereotype.Service;
-
 import com.example.demo.model.ServiceEntry;
 import com.example.demo.model.Vehicle;
 import com.example.demo.model.Garage;
@@ -21,6 +19,8 @@ import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceEntryServiceImpl implements ServiceEntryService {

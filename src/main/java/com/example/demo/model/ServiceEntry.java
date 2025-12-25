@@ -1,11 +1,11 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.PrePersist;
+
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 
@@ -48,11 +48,6 @@ public class ServiceEntry {
     @Column(length = 2000)
     private String description;
 
-    @PrePersist
+    @CreationTimestamp
     private LocalDateTime recordedAt;
-    public void onrecordedAt() {
-        if (this.recordedAt == null) {
-            this.recordedAt = LocalDateTime.now();
-        }
-    }
 }
