@@ -1,53 +1,46 @@
-// package com.example.demo.model;
+package com.example.demo.model;
 
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.Table;
-// import jakarta.persistence.Id;
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
-// import jakarta.persistence.ManyToOne;
-// import jakarta.persistence.JoinColumn;
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-// import jakarta.persistence.Column;
+import java.time.LocalDate;
 
-// import java.time.LocalDate;
-// import java.time.LocalDateTime;
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ServiceEntry {
 
-// import org.hibernate.annotations.CreationTimestamp;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-// import lombok.Data;
-// import lombok.AllArgsConstructor;
-// import lombok.NoArgsConstructor;
+    @ManyToOne
+    @JoinColumn(name = "vehicle_id")
+    private Vehicle vehicle;
 
-// @Entity
-// @Table(name = "service_entries")
-// @Data
-// @AllArgsConstructor
-// @NoArgsConstructor
-// public class ServiceEntry {
+    @ManyToOne
+    @JoinColumn(name = "garage_id")
+    private Garage garage;
 
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private Long id;
+    private String serviceType;
 
-//     @ManyToOne
-//     @JoinColumn(name = "vehicle_id")
-//     private Vehicle vehicle;
+    private LocalDate serviceDate;
 
-//     @ManyToOne
-//     @JoinColumn(name = "garage_id")
-//     private Garage garage;
-
-//     private String serviceType;
-
-//     private LocalDate serviceDate;
-
-//     private Integer odometerReading;
-
-//     @Column(length = 2000)
-//     private String description;
-
-//     @CreationTimestamp
-//     private LocalDateTime recordedAt;
-// }
+    private Integer odometerReading;
+    private String description;
+    @PrePersist
+    public void onrecord() {
+        if (this.recordedAt == null) {
+            this.recordedAt = LocalDateTime.now();
+        }
+    }
+}
