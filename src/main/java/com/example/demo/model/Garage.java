@@ -31,12 +31,6 @@ public class Garage {
     @Column(nullable = false)
     private Boolean active;
 
-    private LocalDateTime createdAt;
+   private String contactNumber;
 
-    @PrePersist
-    public void onCreate(){
-        if (this.createdAt == null) {
-            this.createdAt = LocalDateTime.now();
-        }
-    }
 }
