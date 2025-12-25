@@ -18,11 +18,9 @@ public class ServicePart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    // Many parts belong to one service entry
     @ManyToOne(optional = false)
     @JoinColumn(name = "service_entry_id")
-    @JsonIgnoreProperties({"vehicle", "garage"}) // prevents swagger recursion
+    @JsonIgnoreProperties({"vehicle", "garage"}) 
     private ServiceEntry serviceEntry;
 
     private String partName;
