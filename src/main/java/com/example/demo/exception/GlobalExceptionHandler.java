@@ -42,6 +42,10 @@ import jakarta.persistence.EntityNotFoundException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+     @ExceptionHandler(DuplicateVinException.class)
+    public ResponseEntity<String> handleDuplicateVinException(DuplicateVinException ex) {
+       return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
+    }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegal(IllegalArgumentException ex) {
