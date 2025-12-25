@@ -1,47 +1,34 @@
-package com.example.demo.model;
+package com.example.demo.entity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
+import lombok.Builder;
 
 @Entity
-@Table(name = "vehicles", uniqueConstraints = { @UniqueConstraint(columnNames = { "vin" }) })
+@Table(name = "vehicles")
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String vin;
 
     private String make;
     private String model;
-
-    @Column(nullable = false)
     private Long ownerId;
-
-    @Column(nullable = false)
-    private Boolean active;
- private LocalDateTime createdAt;
-
-    @PrePersist
-    public void onCreate(){
-        if (this.createdAt == null) {
-            this.createdAt = LocalDateTime.now();
-        }
-    }
+    private Boolean isactive;
 }

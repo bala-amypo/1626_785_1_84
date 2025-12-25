@@ -1,8 +1,8 @@
-// package com.example.demo.exception;
+package com.example.demo.exception;
 
-// public class DuplicateVinException extends RuntimeException {
+public class DuplicateVinException extends RuntimeException {
 
-//     public DuplicateVinException(String message) {
-//         super(message);
-//     }
-// }
+    public DuplicateVinException(String message) {
+        super(message);
+    }
+}
