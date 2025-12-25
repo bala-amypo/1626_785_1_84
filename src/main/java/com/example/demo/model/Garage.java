@@ -32,5 +32,4 @@ public class Garage {
     private Boolean active;
 
    private String contactNumber;
-
 }

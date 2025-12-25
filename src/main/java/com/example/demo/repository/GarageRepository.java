@@ -1,10 +1,9 @@
-package com.example.demo.repository;
+package com.example.demo.repositiry;
 
-import com.example.demo.model.Garage;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import com.example.demo.model.Garage;
 
-public interface GarageRepository extends JpaRepository<Garage, Long> {
-    Optional<Garage> findByGarageName(String garageName);
+public interface GarageRepository extends JpaRepository <Garage,Long>{
+    
 }
