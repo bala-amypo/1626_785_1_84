@@ -1,11 +1,18 @@
-// package com.example.demo.repository;
-// import java.util.List;
-// import org.springframework.data.jpa.repository.JpaRepository;
-// import com.example.demo.model.ServiceEntry;
+package com.example.demo.repository;
 
-// public interface ServiceEntryRepository extends JpaRepository<ServiceEntry, Long> {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-//     List<ServiceEntry> findByVehicle_Id(Long vehicleId);
+import com.example.demo.entity.ServiceEntry;
+import com.example.demo.entity.Vehicle;
 
-//     List<ServiceEntry> findByGarage_Id(Long garageId);
-// }
+import java.util.Optional;
+import java.util.List;
+
+public interface ServiceEntryRepository extends JpaRepository<ServiceEntry, Long> {
+
+    Optional<ServiceEntry> findTopByVehicleOrderByOdometerReadingDesc(Vehicle vehicle);
+
+    List<ServiceEntry> findByVehicleId(Long vehicleId);
+
+    List<ServiceEntry> findByGarageId(Long garageId);
+}

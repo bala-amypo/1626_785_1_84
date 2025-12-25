@@ -1,8 +1,8 @@
-// package com.example.demo.exception;
+package com.example.demo.exception;
 
-// public class OdometerValidationException extends RuntimeException {
+public class OdometerValidationException extends RuntimeException {
 
-//     public OdometerValidationException(String message) {
-//         super(message);
-//     }
-// }
+    public OdometerValidationException(String message) {
+        super(message);
+    }
+}
