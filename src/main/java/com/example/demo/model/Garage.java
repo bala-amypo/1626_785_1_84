@@ -1,30 +1,42 @@
-// package com.example.demo.model;
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.Id;
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
-// import jakarta.persistence.Column;
-// import jakarta.validation.constraints.NotBlank;
-// import lombok.Data;
-// import lombok.Builder;
-// import lombok.NoArgsConstructor;
-// import lombok.AllArgsConstructor;
-// import java.util.List;
-// @Entity
-// @Data
-// @Builder
-// @NoArgsConstructor
-// @AllArgsConstructor
-// public class Garage {
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private Long id;
-//     @NotBlank
-//     @Column(name="garageName",unique = true)
-//     private String garageName;
-//     @NotBlank
-//     private String address;
-//     private String contactNumber;
-//     private Boolean isactive=true;
-   
-// }
+package com.example.demo.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "garages", uniqueConstraints = { @UniqueConstraint(columnNames = { "garageName" }) })
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Garage {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String garageName;
+
+    private String address;
+
+    @Column(nullable = false)
+    private Boolean active;
+
+    @PrePersist
+    public void onCreate() {
+        if (active == null) {
+            active = true;
+        }
+    }
+}
