@@ -1,9 +1,11 @@
-package com.example.demo.service.impl;
+// package com.example.demo.service.impl;
 
 import com.example.demo.model.Vehicle;
 import com.example.demo.repository.VehicleRepository;
 import com.example.demo.service.VehicleService;
+
 import jakarta.persistence.EntityNotFoundException;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,15 +21,19 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public Vehicle createVehicle(Vehicle vehicle) {
-        if (vehicle == null || vehicle.getVin() == null) {
+
+        if (vehicle == null || vehicle.getVin() == null || vehicle.getVin().isBlank()) {
             throw new IllegalArgumentException("VIN");
         }
+
         if (vehicleRepository.findByVin(vehicle.getVin()).isPresent()) {
-            throw new IllegalArgumentException("VIN");
+            throw new IllegalArgumentException("VIN already exists");
         }
+
         if (vehicle.getActive() == null) {
             vehicle.setActive(true);
         }
+
         return vehicleRepository.save(vehicle);
     }
 
@@ -50,8 +56,8 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public void deactivateVehicle(Long id) {
-        Vehicle v = getVehicleById(id);
-        v.setActive(false);
-        vehicleRepository.save(v);
+        Vehicle vehicle = getVehicleById(id);
+        vehicle.setActive(false);
+        vehicleRepository.save(vehicle);
     }
 }
