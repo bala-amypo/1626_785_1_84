@@ -1,17 +1,12 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-
-import lombok.Data;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -36,9 +31,13 @@ public class ServiceEntry {
     private LocalDate serviceDate;
 
     private Integer odometerReading;
+
     private String description;
+
+    private LocalDateTime recordedAt;
+
     @PrePersist
-    public void onrecord() {
+    public void onCreate() {
         if (this.recordedAt == null) {
             this.recordedAt = LocalDateTime.now();
         }

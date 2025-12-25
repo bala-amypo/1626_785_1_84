@@ -1,90 +1,96 @@
-// package com.example.demo.service.impl;
+package com.example.demo.service.impl;
 
-// import com.example.demo.model.ServiceEntry;
-// import com.example.demo.model.Vehicle;
-// import com.example.demo.model.Garage;
+import com.example.demo.model.Garage;
+import com.example.demo.model.ServiceEntry;
+import com.example.demo.model.Vehicle;
 
-// import com.example.demo.repository.ServiceEntryRepository;
-// import com.example.demo.repository.VehicleRepository;
-// import com.example.demo.repository.GarageRepository;
+import com.example.demo.repository.GarageRepository;
+import com.example.demo.repository.ServiceEntryRepository;
+import com.example.demo.repository.VehicleRepository;
 
-// import com.example.demo.service.ServiceEntryService;
+import com.example.demo.service.ServiceEntryService;
 
-// import com.example.demo.exception.FutureServiceDateException;
-// import com.example.demo.exception.OdometerValidationException;
-// import com.example.demo.exception.InactiveVehicleException;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
 
-// import jakarta.persistence.EntityNotFoundException;
+import java.time.LocalDate;
+import java.util.List;
 
-// import java.time.LocalDate;
-// import java.util.List;
-// import java.util.Optional;
+@Service
+public class ServiceEntryServiceImpl implements ServiceEntryService {
 
-// import org.springframework.stereotype.Service;
+    private final ServiceEntryRepository entryRepo;
+    private final VehicleRepository vehicleRepo;
+    private final GarageRepository garageRepo;
 
-// @Service
-// public class ServiceEntryServiceImpl implements ServiceEntryService {
+    public ServiceEntryServiceImpl(ServiceEntryRepository entryRepo,
+                                   VehicleRepository vehicleRepo,
+                                   GarageRepository garageRepo) {
+        this.entryRepo = entryRepo;
+        this.vehicleRepo = vehicleRepo;
+        this.garageRepo = garageRepo;
+    }
 
-//     private final ServiceEntryRepository s;
-//     private final VehicleRepository v;
-//     private final GarageRepository g;
+    @Override
+    public ServiceEntry createServiceEntry(ServiceEntry entry) {
 
-//     public ServiceEntryServiceImpl(ServiceEntryRepository s, VehicleRepository v, GarageRepository g) {
-//         this.s = s;
-//         this.v = v;
-//         this.g = g;
-//     }
+        if (entry == null || entry.getVehicle() == null || entry.getVehicle().getId() == null) {
+            throw new IllegalArgumentException("Vehicle not found");
+        }
+        if (entry.getGarage() == null || entry.getGarage().getId() == null) {
+            throw new IllegalArgumentException("Garage not found");
+        }
 
-//     @Override
-//     public ServiceEntry createServiceEntry(ServiceEntry entry) {
+        Vehicle vehicle = vehicleRepo.findById(entry.getVehicle().getId())
+                .orElseThrow(() -> new EntityNotFoundException("Vehicle not found"));
 
-//         if (entry == null || entry.getVehicle() == null || entry.getVehicle().getId() == null) {
-//             throw new EntityNotFoundException("Vehicle not found");
-//         }
-//         if (entry.getGarage() == null || entry.getGarage().getId() == null) {
-//             throw new EntityNotFoundException("Garage not found");
-//         }
+        Garage garage = garageRepo.findById(entry.getGarage().getId())
+                .orElseThrow(() -> new EntityNotFoundException("Garage not found"));
 
-//         Vehicle vehicle = v.findById(entry.getVehicle().getId())
-//                 .orElseThrow(() -> new EntityNotFoundException("Vehicle not found"));
+        // Rule: only active vehicles can receive service entries
+        if (vehicle.getActive() != null && vehicle.getActive() == false) {
+            throw new IllegalArgumentException("active vehicles");
+        }
 
-//         Garage garage = g.findById(entry.getGarage().getId())
-//                 .orElseThrow(() -> new EntityNotFoundException("Garage not found"));
+        // Rule: only active garages can create service entries
+        if (garage.getActive() != null && garage.getActive() == false) {
+            throw new IllegalArgumentException("active garages");
+        }
 
-//         if (vehicle.getActive() != null && vehicle.getActive().equals(false)) {
-//             throw new InactiveVehicleException("Only active vehicles allowed");
-//         }
+        // Rule: serviceDate must be <= today
+        if (entry.getServiceDate() != null && entry.getServiceDate().isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("future");
+        }
 
-//         if (entry.getServiceDate() != null && entry.getServiceDate().isAfter(LocalDate.now())) {
-//             throw new FutureServiceDateException("Service date cannot be future");
-//         }
+        // Rule: odometerReading must be >= previous readings
+        if (entry.getOdometerReading() != null) {
+            ServiceEntry last = entryRepo.findTopByVehicleOrderByOdometerReadingDesc(vehicle);
+            if (last != null && last.getOdometerReading() != null
+                    && entry.getOdometerReading() < last.getOdometerReading()) {
+                throw new IllegalArgumentException(">=");
+            }
+        }
 
-//         Optional<ServiceEntry> last = s.findTopByVehicleOrderByOdometerReadingDesc(vehicle);
-//         if (last.isPresent() && entry.getOdometerReading() != null) {
-//             Integer lastOdo = last.get().getOdometerReading();
-//             if (lastOdo != null && entry.getOdometerReading() < lastOdo) {
-//                 throw new OdometerValidationException("Odometer reading must be >=");
-//             }
-//         }
+        // attach managed entities
+        entry.setVehicle(vehicle);
+        entry.setGarage(garage);
 
-//         entry.setVehicle(vehicle);
-//         entry.setGarage(garage);
+        return entryRepo.save(entry);
+    }
 
-//         return s.save(entry);
-//     }
+    @Override
+    public ServiceEntry getServiceEntryById(Long id) {
+        return entryRepo.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("ServiceEntry not found"));
+    }
 
-//     @Override
-//     public ServiceEntry getEntryById(Long id) {
-//         return s.findById(id).orElseThrow(() -> new EntityNotFoundException("ServiceEntry not found"));
-//     }
+    @Override
+    public List<ServiceEntry> getEntriesForVehicle(Long vehicleId) {
+        return entryRepo.findByVehicleId(vehicleId);
+    }
 
-//     @Override
-//     public List<ServiceEntry> getEntriesForVehicle(Long vehicleId) {
-//         return s.findByVehicleId(vehicleId);
-//     }
-
-//     @Override
-//     public List<ServiceEntry> getEntriesByGarage(Long garageId) {
-//         return s.findByGarageId(garageId);
-//     }
-// }
+    @Override
+    public List<ServiceEntry> getEntriesByGarage(Long garageId) {
+        return entryRepo.findByGarageId(garageId);
+    }
+}

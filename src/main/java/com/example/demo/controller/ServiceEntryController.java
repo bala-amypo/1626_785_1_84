@@ -1,38 +1,37 @@
+package com.example.demo.controller;
 
-// package com.example.demo.controller;
+import com.example.demo.model.ServiceEntry;
+import com.example.demo.service.ServiceEntryService;
 
-// import java.util.List;
-// import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
-// import com.example.demo.model.ServiceEntry;
-// import com.example.demo.service.ServiceEntryService;
+import java.util.List;
 
-// @RestController
-// public class ServiceEntryController {
+@RestController
+@RequestMapping("/api/service-entries")
+public class ServiceEntryController {
 
-//     private final ServiceEntryService serr;
+    @Autowired
+    private ServiceEntryService service;
 
-//     public ServiceEntryController(ServiceEntryService serr) {
-//         this.serr = serr;
-//     }
+    @PostMapping
+    public ServiceEntry createServiceEntry(@RequestBody ServiceEntry entry) {
+        return service.createServiceEntry(entry);
+    }
 
-//     @PostMapping("/POSTTT")
-//     public ServiceEntry createServiceEntry(@RequestBody ServiceEntry entry) {
-//         return serr.createServiceEntry(entry);
-//     }
+    @GetMapping("/{id}")
+    public ServiceEntry getServiceEntryById(@PathVariable Long id) {
+        return service.getServiceEntryById(id);
+    }
 
-//     @GetMapping("/GETTT/vehicle/{vehicleId}")
-//     public List<ServiceEntry> getByVehicle(@PathVariable Long vehicleId) {
-//         return serr.getEntriesForVehicle(vehicleId);
-//     }
+    @GetMapping("/vehicle/{vehicleId}")
+    public List<ServiceEntry> getEntriesForVehicle(@PathVariable Long vehicleId) {
+        return service.getEntriesForVehicle(vehicleId);
+    }
 
-//     @GetMapping("/gettt/{id}")
-//     public ServiceEntry getServiceEntry(@PathVariable Long id) {
-//         return serr.getServiceEntryById(id);
-//     }
-
-//     @GetMapping("/get/garage/{id}")
-//     public List<ServiceEntry> getByGarage(@PathVariable Long id) {
-//         return serr.getEntriesByGarage(id);
-//     }
-// }
+    @GetMapping("/garage/{garageId}")
+    public List<ServiceEntry> getEntriesByGarage(@PathVariable Long garageId) {
+        return service.getEntriesByGarage(garageId);
+    }
+}
