@@ -1,47 +1,35 @@
-// package com.example.demo.model;
+package com.example.demo.model;
 
-// import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.Id;
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
-// import jakarta.persistence.JoinColumn;
-// import jakarta.persistence.OneToOne;
+import java.math.BigDecimal;
 
-// import jakarta.validation.constraints.NotBlank;
-// import jakarta.validation.constraints.NotNull;
-// import jakarta.validation.constraints.Positive;
+@Entity
+@Table(name = "service_parts")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ServicePart {
 
-// import lombok.Data;
-// import lombok.NoArgsConstructor;
-// import lombok.AllArgsConstructor;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-// @Entity
-// @Data
-// @NoArgsConstructor
-// @AllArgsConstructor
-// public class ServicePart {
+    // Many parts belong to one ServiceEntry
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "service_entry_id")
+    @JsonIgnoreProperties({"vehicle", "garage"}) // avoids deep swagger recursion
+    private ServiceEntry serviceEntry;
 
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private Long id;
+    private String partName;
+    private String partNumber;
 
-//     @OneToOne
-//     @JoinColumn(name = "service_entry_id", nullable = false)
-//     private ServiceEntry serviceEntry;
+    @Column(precision = 12, scale = 2)
+    private BigDecimal cost;
 
-//     @NotBlank
-//     private String partName;
-
-//     @NotBlank
-//     private String partNumber;
-
-//     @NotNull
- 
-//     private int quantity;
-
-//     @NotNull
-//     @Positive
-//     private BigDecimal cost;
-// }
+    private Integer quantity;
+}
