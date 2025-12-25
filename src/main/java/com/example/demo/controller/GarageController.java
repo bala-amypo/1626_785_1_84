@@ -1,43 +1,43 @@
-package com.example.demo.controller;
+// package com.example.demo.controller;
 
-import com.example.demo.model.Garage;
-import com.example.demo.service.GarageService;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+// import com.example.demo.model.Garage;
+// import com.example.demo.service.GarageService;
+// import org.springframework.web.bind.annotation.RestController;
+// import org.springframework.web.bind.annotation.PostMapping;
+// import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.web.bind.annotation.PutMapping;
+// import org.springframework.web.bind.annotation.PathVariable;
+// import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.List;
+// import java.util.List;
 
-@RestController
+// @RestController
 
-public class GarageController {
+// public class GarageController {
 
-    private final GarageService garageService;
+//     private final GarageService garageService;
 
-    public GarageController(GarageService garageService) {
-        this.garageService = garageService;
-    }
+//     public GarageController(GarageService garageService) {
+//         this.garageService = garageService;
+//     }
 
-    @PostMapping("/POST GARAGE")
-    public Garage createGarage(@RequestBody Garage garage) {
-        return garageService.createGarage(garage);
-    }
+//     @PostMapping("/POST GARAGE")
+//     public Garage createGarage(@RequestBody Garage garage) {
+//         return garageService.createGarage(garage);
+//     }
 
-    @GetMapping("/GET{id}")
-    public Garage getGarageById(@PathVariable Long id) {
-        return garageService.getGarageById(id);
-    }
+//     @GetMapping("/GET{id}")
+//     public Garage getGarageById(@PathVariable Long id) {
+//         return garageService.getGarageById(id);
+//     }
 
-    @GetMapping ("GETALL")
-    public List<Garage> getAllGarages() {
-        return garageService.getAllGarages();
-    }
+//     @GetMapping ("GETALL")
+//     public List<Garage> getAllGarages() {
+//         return garageService.getAllGarages();
+//     }
 
-    @PutMapping("/PUTGarage")
-    public Garage deactivateGarage(@PathVariable Long id) {
-        return garageService.deactivateGarage(id);
-    }
-}
+//     @PutMapping("/PUTGarage")
+//     public Garage deactivateGarage(@PathVariable Long id) {
+//         return garageService.deactivateGarage(id);
+//     }
+// }
