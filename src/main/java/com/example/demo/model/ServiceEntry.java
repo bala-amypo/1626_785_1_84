@@ -1,27 +1,17 @@
 package com.example.demo.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Column;
-import jakarta.persistence.PrePersist;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 
-import org.hibernate.annotations.CreationTimestamp;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import com.example.demo.entity.Vehicle;  
+import com.example.demo.model.Garage;   
 
 @Entity
-@Table(name = "service_entries")
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ServiceEntry {
@@ -31,30 +21,34 @@ public class ServiceEntry {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "vehicle_id")
+    @JoinColumn(name = "vehicle_id", nullable = false)
     private Vehicle vehicle;
 
     @ManyToOne
-    @JoinColumn(name = "garage_id")
+    @JoinColumn(name = "garage_id", nullable = false)
     private Garage garage;
 
-    @Column(nullable = false)
+    @NotBlank
+    @NotNull
     private String serviceType;
 
-    @Column(nullable = false)
+    @NotNull
     private LocalDate serviceDate;
 
-    @Column(nullable = false)
-    private Integer odometerReading;
+    @NotNull
+    @Positive
+    private int odometerReading;
 
+    @NotNull
     private String description;
 
-    @PrePersist
+    @NotNull
     private LocalDateTime recordedAt;
-    public void onCreate(){
+
+    @PrePersist
+    public void Onrecord() {
         if (this.recordedAt == null) {
             this.recordedAt = LocalDateTime.now();
         }
     }
-
 }
