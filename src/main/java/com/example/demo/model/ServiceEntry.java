@@ -1,5 +1,4 @@
 package com.example.demo.model;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -50,7 +49,7 @@ public class ServiceEntry {
 
     private String description;
 
-    @Prepersist
+    @PrePersist
     private LocalDateTime recordedAt;
     public void onCreate(){
         if (this.recordedAt == null) {
