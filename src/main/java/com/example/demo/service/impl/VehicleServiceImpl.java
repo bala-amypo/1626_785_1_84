@@ -23,7 +23,7 @@ public class VehicleServiceImpl implements VehicleService {
 
         Vehicle existing = v.findByVin(vehicle.getVin());
         if (existing != null) {
-            // ✅ testcase keyword must contain "VIN"
+            
             throw new IllegalArgumentException("VIN already exists");
         }
 
