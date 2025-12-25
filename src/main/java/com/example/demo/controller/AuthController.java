@@ -1,31 +1,34 @@
+package com.example.demo.controller;
 
-// package com.example.demo.controller;
-// import java.util.List;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.PutMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.model.User;
+import com.example.demo.service.UserService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-// import com.example.demo.model.User;
-// import com.example.demo.service.UserService;
-// @RestController
-// public class AuthController {
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
 
-//     private final UserService userr;
+    private final UserService userService;
 
-//     public AuthController(UserService userr) {
-//         this.userr = userr;
-//     }
+    public AuthController(UserService userService) {
+        this.userService = userService;
+    }
 
-//     @PostMapping("/regg")
-//     public String register(@RequestBody User user) {
-//         return userr.createUser(user); 
-//     }
-//     @GetMapping("/GETTReg")
-//     public List<User>getAll(){
-//     return userr.getAllUser();
-// }
-// }
+    @PostMapping("/register")
+    public ResponseEntity<User> register(@RequestBody User user) {
+        User saved = userService.register(user);
+        return ResponseEntity.ok(saved);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestParam String email,
+                                      @RequestParam String password) {
+        User loggedIn = userService.login(email, password);
+        return ResponseEntity.ok(loggedIn);
+    }
+}
