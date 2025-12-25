@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Column;
-
+import jakarta.persistence.PrePersist;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -31,7 +31,6 @@ public class ServiceEntry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /* MANY TO ONE — EXACTLY LIKE STUDENT SAMPLE */
     @ManyToOne
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
