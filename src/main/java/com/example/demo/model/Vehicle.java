@@ -30,5 +30,5 @@ public class Vehicle {
     private String make;
     private String model;
     private Long ownerId;
-    private Boolean isactive;
+    private Boolean isactive=true;
 }
