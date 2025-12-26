@@ -86,3 +86,72 @@
 // //         return ResponseEntity.ok().build();
 // //     }
 // // }
+
+
+package com.example.demo.controller;
+
+import com.example.demo.model.Vehicle;
+import com.example.demo.service.VehicleService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/vehicles")
+public class VehicleController {
+
+    private final VehicleService vehicleService;
+
+    public VehicleController(VehicleService vehicleService) {
+        this.vehicleService = vehicleService;
+    }
+
+    // 1) Create Vehicle
+    // POST /api/vehicles
+    @PostMapping
+    public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle vehicle) {
+        Vehicle saved = vehicleService.createVehicle(vehicle);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    }
+
+    // 2) Get Vehicle by ID
+    // GET /api/vehicles/{id}
+    @GetMapping("/{id}")
+    public ResponseEntity<Vehicle> getVehicleById(@PathVariable Long id) {
+        return ResponseEntity.ok(vehicleService.getVehicleById(id));
+    }
+
+    // 3) Get Vehicle by VIN
+    // GET /api/vehicles/vin/{vin}
+    @GetMapping("/vin/{vin}")
+    public ResponseEntity<Vehicle> getVehicleByVin(@PathVariable String vin) {
+        return ResponseEntity.ok(vehicleService.getVehicleByVin(vin));
+    }
+
+    // 4) List Vehicles by Owner
+    // GET /api/vehicles/owner/{ownerId}
+    @GetMapping("/owner/{ownerId}")
+    public ResponseEntity<List<Vehicle>> getVehiclesByOwner(@PathVariable Long ownerId) {
+        return ResponseEntity.ok(vehicleService.getVehiclesByOwner(ownerId));
+    }
+
+    // 5) Deactivate Vehicle
+    // PUT /api/vehicles/{id}/deactivate
+    @PutMapping("/{id}/deactivate")
+    public ResponseEntity<Void> deactivateVehicle(@PathVariable Long id) {
+        vehicleService.deactivateVehicle(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    // (Optional) Delete Vehicle
+    // DELETE /api/vehicles/{id}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteVehicle(@PathVariable Long id) {
+        // If you want strict "not found" behavior, call service.getVehicleById(id) first.
+        // For now, you can add delete to service later if needed.
+        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
+    }
+}
