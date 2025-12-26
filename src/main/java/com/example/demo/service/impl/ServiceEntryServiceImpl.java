@@ -178,4 +178,9 @@ public class ServiceEntryServiceImpl implements ServiceEntryService {
     public List<ServiceEntry> getEntriesByGarage(Long garageId) {
         return entryRepo.findByGarageId(garageId);
     }
+    @Override
+public java.util.Optional<ServiceEntry> getServiceEntryById(Long id) {
+    return entryRepo.findById(id);
+}
+
 }
