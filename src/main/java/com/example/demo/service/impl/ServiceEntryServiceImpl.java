@@ -91,7 +91,7 @@
 //     }
 // }
 
-package com.example.demo.service.impl;
+// package com.example.demo.service.impl;
 
 import com.example.demo.model.Garage;
 import com.example.demo.model.ServiceEntry;
@@ -101,9 +101,10 @@ import com.example.demo.repository.ServiceEntryRepository;
 import com.example.demo.repository.VehicleRepository;
 import com.example.demo.service.ServiceEntryService;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceEntryServiceImpl implements ServiceEntryService {
@@ -126,6 +127,7 @@ public class ServiceEntryServiceImpl implements ServiceEntryService {
         if (entry == null || entry.getVehicle() == null || entry.getVehicle().getId() == null) {
             throw new IllegalArgumentException("Vehicle not found");
         }
+
         if (entry.getGarage() == null || entry.getGarage().getId() == null) {
             throw new IllegalArgumentException("Garage not found");
         }
@@ -136,25 +138,21 @@ public class ServiceEntryServiceImpl implements ServiceEntryService {
         Garage garage = garageRepo.findById(entry.getGarage().getId())
                 .orElseThrow(() -> new EntityNotFoundException("Garage not found"));
 
-     
-        if (vehicle.getActive() != null && !vehicle.getActive()) {
+        if (!vehicle.getActive()) {
             throw new IllegalArgumentException("Only active vehicles allowed");
         }
 
-        if (garage.getActive() != null && !garage.getActive()) {
+        if (!garage.getActive()) {
             throw new IllegalArgumentException("Garage is inactive");
         }
 
-        if (entry.getServiceDate() != null && entry.getServiceDate().isAfter(LocalDate.now())) {
+        if (entry.getServiceDate().isAfter(LocalDate.now())) {
             throw new IllegalArgumentException("Service date cannot be future");
         }
 
-        if (entry.getOdometerReading() != null) {
-            ServiceEntry last = entryRepo.findTopByVehicleOrderByOdometerReadingDesc(vehicle);
-            if (last != null && last.getOdometerReading() != null
-                    && entry.getOdometerReading() < last.getOdometerReading()) {
-                throw new IllegalArgumentException("Odometer reading must be >=");
-            }
+        ServiceEntry last = entryRepo.findTopByVehicleOrderByOdometerReadingDesc(vehicle);
+        if (last != null && entry.getOdometerReading() < last.getOdometerReading()) {
+            throw new IllegalArgumentException("Odometer reading must be >=");
         }
 
         entry.setVehicle(vehicle);
@@ -178,9 +176,4 @@ public class ServiceEntryServiceImpl implements ServiceEntryService {
     public List<ServiceEntry> getEntriesByGarage(Long garageId) {
         return entryRepo.findByGarageId(garageId);
     }
-    @Override
-public java.util.Optional<ServiceEntry> getServiceEntryById(Long id) {
-    return entryRepo.findById(id);
-}
-
 }
