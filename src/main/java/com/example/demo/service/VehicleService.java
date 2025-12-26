@@ -62,8 +62,10 @@ public interface VehicleService {
 
     List<Vehicle> getVehicleByOwner(Long ownerId);
 
-    // ✅ add this for controller compatibility
+    
     default List<Vehicle> getVehicleByOwner(Long ownerId, boolean dummy) {
         return getVehicleByOwner(ownerId);
     }
+    List<Vehicle> getVehicleByOwner(Long ownerId);
+
 }
