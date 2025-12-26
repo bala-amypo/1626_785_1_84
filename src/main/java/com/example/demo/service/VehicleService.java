@@ -62,10 +62,5 @@ public interface VehicleService {
 
     List<Vehicle> getVehicleByOwner(Long ownerId);
 
-    
-    default List<Vehicle> getVehicleByOwner(Long ownerId, boolean dummy) {
-        return getVehicleByOwner(ownerId);
-    }
-    List<Vehicle> getVehicleByOwner(Long ownerId);
-
+    void deactivateVehicle(Long id);
 }
