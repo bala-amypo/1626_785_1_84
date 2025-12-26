@@ -1,5 +1,4 @@
 package com.example.demo;
-
 import com.example.demo.model.Garage;
 import com.example.demo.model.ServiceEntry;
 import com.example.demo.model.ServicePart;
