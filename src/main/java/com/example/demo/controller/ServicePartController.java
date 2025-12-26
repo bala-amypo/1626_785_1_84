@@ -1,34 +1,25 @@
-// package com.example.demo.controller;
+package com.example.demo.controller;
 
-// import com.example.demo.model.ServicePart;
-// import com.example.demo.service.ServicePartService;
+import com.example.demo.model.ServicePart;
+import com.example.demo.service.ServicePartService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
 
-// import org.springframework.web.bind.annotation.*;
+@RestController
+@RequestMapping("/service-parts")
+public class ServicePartController {
+    private final ServicePartService servicePartService;
 
-// import java.util.List;
+    public ServicePartController(ServicePartService servicePartService) {
+        this.servicePartService = servicePartService;
+    }
 
-// @RestController
-// @RequestMapping("/api/service-parts")
-// public class ServicePartController {
-
-//     private final ServicePartService ser;
-
-//     public ServicePartController(ServicePartService ser) {
-//         this.ser = ser;
-//     }
-
-//     @PostMapping
-//     public ServicePart createPart(@RequestBody ServicePart part) {
-//         return ser.createPart(part);
-//     }
-
-//     @GetMapping("/{id}")
-//     public ServicePart getPartById(@PathVariable Long id) {
-//         return ser.getPartById(id);
-//     }
-
-//     @GetMapping("/entry/{entryId}")
-//     public List<ServicePart> getPartsForEntry(@PathVariable Long entryId) {
-//         return ser.getPartsForEntry(entryId);
-//     }
-// }
+    @PostMapping
+    public ResponseEntity<ServicePart> create(@Valid @RequestBody ServicePart p) {
+        return ResponseEntity.ok(servicePartService.createPart(p));
+    }
+}
